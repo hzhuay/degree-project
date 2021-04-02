@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // import { Button, Select } from 'element-ui';
 import axios from 'axios'
+import 'normalize.css'
 
 Vue.use(ElementUI);
 

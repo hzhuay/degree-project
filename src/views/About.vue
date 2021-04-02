@@ -67,46 +67,67 @@
         <el-form-item label="房间分配 ">
           <el-row :gutter="0">
             <el-col :span="5">
-              <el-input-number v-model="form.room" controls-position="right" :min="1" :max="10" size="small"></el-input-number>
+              <el-input v-model="form.room" placeholder="请输入内容"></el-input>
             </el-col>
             <el-col :span="1">室</el-col>
 
             <el-col :span="5">
-              <el-input-number v-model="form.hall" controls-position="right" :min="1" :max="10" size="small"></el-input-number>
+              <el-input v-model="form.hall" placeholder="请输入内容"></el-input>
             </el-col>
             <el-col :span="1">厅</el-col>
 
             <el-col :span="5">
-              <el-input-number v-model="form.toilet" controls-position="right" :min="1" :max="10" size="small"></el-input-number>
+              <el-input v-model="form.toilet" placeholder="请输入内容"></el-input>
             </el-col>
             <el-col :span="1">卫</el-col>
 
             <el-col :span="5">
-              <el-input-number v-model="form.kitchen" controls-position="right" :min="1" :max="10" size="small"></el-input-number>
+              <el-input v-model="form.kitchen" placeholder="请输入内容"></el-input>
             </el-col>
             <el-col :span="1">厨</el-col>
           </el-row>
-
-        </el-form-item>
-
-
-        <el-form-item label="交易所属">
-          <el-select v-model="form.owner" placeholder="请选择环数">
-            <el-option label="定向安置房" value="0"></el-option>
-            <el-option label="限价商品房" value="1"></el-option>
-            <el-option label="商品房" value="2"></el-option>
-            <el-option label="央产房" value="3"></el-option>
-            <el-option label="已购公房" value="4"></el-option>
-            <el-option label="一类经济适用房" value="5"></el-option>
-            <el-option label="二类经济适用房" value="6"></el-option>
-            <el-option label="私产" value="7"></el-option>
-          </el-select>
         </el-form-item>
 
         <el-form-item label="有无电梯">
           <el-switch v-model="form.elevator"></el-switch>
         </el-form-item>
 
+        <el-form-item label="装修情况">
+          <el-select v-model="form.decoration" placeholder="">
+            <el-option label="精装/Exquisite Decoration" value="0"></el-option>
+            <el-option label="简装/Simple Decoration" value="1"></el-option>
+            <el-option label="毛坯/Roughcast House" value="2"></el-option>
+            <el-option label="其他/Other" value="3"></el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="户型">
+          <el-select v-model="form.structure" placeholder="">
+            <el-option label="平层/Flat" value="0"></el-option>
+            <el-option label="复式/maisonette" value="1"></el-option>
+            <el-option label="跃层" value="2"></el-option>
+            <el-option label="错层" value="3"></el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="总楼层数">
+          <el-input v-model="form.totalFloor" placeholder="请输入内容"></el-input>
+        </el-form-item>
+
+        <el-form-item label="楼层">
+          <el-select v-model="form.floor" placeholder="">
+            <el-option label="地下室/Basement" value="0"></el-option>
+            <el-option label="底层/Ground Floor" value="1"></el-option>
+            <el-option label="低层/Low Floor" value="2"></el-option>
+            <el-option label="中层/Middle Floor" value="3"></el-option>
+            <el-option label="高层/High Floor" value="4"></el-option>
+            <el-option label="顶层/Top Floor" value="5"></el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button type="primary" @click="predict">预测房价</el-button>
+        </el-form-item>
 
       </el-form>
       <p>{{form.mall}}</p>
@@ -119,6 +140,8 @@
 </template>
 
 <script>
+import {request} from "@/network/request";
+
 export default{
   name: 'Map',
   data() {
@@ -145,8 +168,11 @@ export default{
         hall: 0,
         toilet: 0,
         kitchen: 0,
-        owner: 0,
-        elevator: true
+        elevator: true,
+        decoration: 0,
+        structure: 0,
+        totalFloor: 0,
+        floor: 0
       }
     }
   },
@@ -290,6 +316,20 @@ export default{
           log.error('根据地址查询位置失败');
         }
       });
+    },
+    predict() {
+      request({
+        url: '/predict',
+        data: this.form,
+        method: "POST"
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+      // axios.post('http://127.0.0.1:5000/predict', this.form).then(res => {
+      //   console.log(res);
+      // })
     }
 
   },

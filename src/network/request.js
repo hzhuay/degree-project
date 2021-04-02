@@ -1,40 +1,40 @@
 import axios from 'axios'
 
 export function request(config) {
-    return new Promise((resolve, reject) => {
-        // 创建axios实例
-        const instance = axios.create({
-            baseURL: '127.0.0.1:5000',
-            timeout: 5000
-        })
+    // 创建axios实例
+    const instance = axios.create({
+        baseURL: 'http://localhost:5000',
+        timeout: 5000
+    })
 
-        // 请求拦截器
-        instance.interceptors.request.use(con => {
-            // 这里可以对请求的配置进行修改，比如说config不符合服务器要求
-            // 或者每次发送网络请求时，都希望在前端界面中显示一个图标
-            // 某些网络网络请求，比如说登录时需要token，可以在前端验证
-            // 拦截下来的请求配置一定要返回回去，不然请求就无法完成
-            return con;
-        }, err => {
-            console.log(err);
-        })
+    // 请求拦截器
+    // instance.interceptors.request.use(con => {
+    //     // 这里可以对请求的配置进行修改，比如说config不符合服务器要求
+    //     // 或者每次发送网络请求时，都希望在前端界面中显示一个图标
+    //     // 某些网络网络请求，比如说登录时需要token，可以在前端验证
+    //     // 拦截下来的请求配置一定要返回回去，不然请求就无法完成
+    //     return con;
+    // }, err => {
+    //     console.log(err);
+    // })
 
-        // 响应拦截器
-        instance.interceptors.response.use(res => {
-            return res.data;
-        }, err => {
-            console.log(err);
-        })
+    // 响应拦截器
+    instance.interceptors.response.use(res => {
+        // console.log(res)
+        return res.data;
+    }, err => {
+        console.log(err);
+    })
 
-        // 发送网络请求
-        return instance(config);
-    });
+    // 发送网络请求
+    return instance(config);
 }
 
 /*
 使用方式
 request({
-    url: '/home'
+    url: '/home',
+    method: "POST"
 }).then(res => {
     console.log(res);
 }).catch(err => {

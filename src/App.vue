@@ -1,10 +1,18 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" class="fix-head">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/learn">Learn</router-link> |
+      <router-link to="/list">List</router-link>
     </div>
-    <router-view/>
+    <div class="head-place"></div>
+
+<!--      <router-link :to="'/user/'+userId">用户</router-link>-->
+<!--      <router-link :to="{path: '/profile', query: {name: 'Jack', age: 18}}"></router-link>-->
+<!--      <button @click="jump">跳转</button>-->
+
+    <router-view></router-view>
 
   </div>
 </template>
@@ -13,7 +21,15 @@
   export default {
     data() {
       return {
-        name: 'Jack'
+        name: 'Jack',
+        userId: 1,
+        isfix: false
+      }
+    },
+    methods: {
+      jump() {
+        this.$router.push('/user/' + this.userId);
+        this.$router.replace()
       }
     }
   }
@@ -40,5 +56,19 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.fix-head{
+  background-color: black;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 10px;
+  z-index: 999;
+}
+
+.head-place{
+  height: 70px;
+  width: 100%;
 }
 </style>
