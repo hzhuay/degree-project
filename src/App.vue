@@ -41,7 +41,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .fix-head{
-  background-color: black;
+  background-color: #f6f6f6;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -68,7 +68,7 @@
 }
 
 .head-place{
-  height: 70px;
+  height: 80px;
   width: 100%;
 }
 </style>

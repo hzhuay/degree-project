@@ -7,8 +7,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import { Button, Select } from 'element-ui';
 import axios from 'axios'
 import 'normalize.css'
+import VCalendar from 'v-calendar';
 
 Vue.use(ElementUI);
+// Use v-calendar & v-date-picker components
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+});
 
 Vue.config.productionTip = false
 
