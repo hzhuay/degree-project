@@ -5,6 +5,14 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/learn">Learn</router-link> |
       <router-link to="/list">List</router-link>
+
+      <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" router
+               style="height: 60px; width: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: #f6f6f6; z-index: 999">
+        <el-menu-item index="/">Home</el-menu-item>
+        <el-menu-item index="about">Predict</el-menu-item>
+        <el-menu-item index="list">List</el-menu-item>
+
+      </el-menu>
     </div>
     <div class="head-place"></div>
 
@@ -23,13 +31,17 @@
       return {
         name: 'Jack',
         userId: 1,
-        isfix: false
+        isfix: false,
+        activeIndex: '1'
       }
     },
     methods: {
       jump() {
         this.$router.push('/user/' + this.userId);
         this.$router.replace()
+      },
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
       }
     }
   }
@@ -45,9 +57,6 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
 
 #nav a {
   font-weight: bold;
@@ -55,7 +64,7 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #409EFF;
 }
 
 .fix-head{
@@ -68,7 +77,7 @@
 }
 
 .head-place{
-  height: 80px;
+  height: 70px;
   width: 100%;
 }
 </style>

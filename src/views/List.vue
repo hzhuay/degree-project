@@ -22,27 +22,41 @@
           </div>
         </el-dialog>
 
-        <el-button @click="priceDialogVisible = true">price</el-button>
-        <el-dialog title="Price Range" :visible.sync="priceDialogVisible" class="select-dialog-price">
-          <div class="block">
-            <span class="demonstration">默认 click 触发子菜单</span>
-            <el-slider
-              v-model="priceRange"
-              range
-              :show-tooltip="false"
-              :min="0"
-              :max="500"
-              @input="priceRangeChange(value)"
+        <div style="position: relative; display: inline-block">
+          <el-button @click="priceDialogVisible = true" type="">price</el-button>
+          <el-dialog title="Price Range" :visible.sync="priceDialogVisible" class="select-dialog-price">
+            <div class="block">
+              <div>
+                <el-row :gutter="20">
+                  <el-col :span="11">
+                    <el-input v-model="minPrice">
+                      <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
+                    </el-input>
+                  </el-col>
+                  <el-col :span="2" >
+                    <span style="text-align: center; height: 40px; line-height: 40px; font-size: 26px;">-</span>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-input v-model="maxPrice">
+                      <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
+                    </el-input>
+                  </el-col>
+                </el-row>
 
-              >
-            </el-slider>
-          </div>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="priceDialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="priceDialogVisible = false">确 定</el-button>
-          </div>
-        </el-dialog>
+              </div>
+              <!--            价格区间-->
+              <el-slider v-model="priceRange" range :show-tooltip="false" :min="0" :max="maxPriceRange" :step="1"></el-slider>
+            </div>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="priceDialogVisible = false">取 消</el-button>
+              <el-button type="primary" @click="priceRangeChange">确 定</el-button>
+            </div>
+          </el-dialog>
+        </div>
 
+        <div style="position: relative; display: inline-block">
+          <el-button @click="areaDialogVisible = true" type="">area</el-button>
+        </div>
 
 <!--        <vc-calendar :columns="$screens({ default: 1, lg: 2 })"></vc-calendar>-->
 
@@ -98,6 +112,8 @@
         </el-pagination>
       </div>
 
+<!--      <el-backtop target=".left-block"></el-backtop>-->
+
     </div>
 <!--    高德地图-->
     <div id="container" tabindex="0"></div>
@@ -111,7 +127,6 @@
   bottom: 0px;
   width: 34%;
   top: 70px;
-  margin-top: 10px;
 }
 
 .left-block{
@@ -184,11 +199,13 @@
 
 }
 .select-dialog-price .el-dialog{
-  background-color: #2c3e50;
+  /*background-color: #2c3e50;*/
   width: 30%;
+  /*position: absolute;*/
+  /*top: 40px;*/
+  /*left: 30px;*/
 }
 </style>
-
 
 <script>
 import {request} from "@/network/request";
@@ -209,7 +226,8 @@ export default {
       page: 1,
       dialogFormVisible: false,
       priceDialogVisible: false,
-      priceRange: [0,100],
+      maxPriceRange: 2000,
+      priceRange: [0,2000],
       formLabelWidth: '120px',
       form: {
         name: '',
@@ -227,6 +245,22 @@ export default {
 
     }
   },
+  computed: {
+    maxPrice() {
+      return this.priceRange[1] == this.maxPriceRange ? this.priceRange[1] + '万+' : this.priceRange[1] + '万';
+    },
+    minPrice() {
+      return this.priceRange[0] + '万';
+    },
+    params() {
+      return {
+        page: this.page,
+        offset: this.pageSize,
+        minPrice: this.priceRange[0],
+        maxPrice: this.priceRange[1]
+      }
+    }
+  },
   mounted() {
 
     this.map = new AMap.Map('container',{
@@ -236,10 +270,7 @@ export default {
       zoom: 14,
     });
 
-    this.getData({
-      page: 1,
-      offset: this.pageSize
-    });
+    this.getData(this.params);
   },
   created() {
 
@@ -248,44 +279,40 @@ export default {
     nextPage() {
       console.log("next page");
       this.page += 1
-      this.getData({
-        page: this.page,
-        offset: this.pageSize
-      })
+      // this.getData(this.params);
     },
     prevPage() {
       console.log('prev page');
       this.page -= 1
-      this.getData({
-        page: this.page,
-        offset: this.pageSize
-      })
+      // this.getData(this.params)
     },
     currentChange() {
       console.log("currentChange");
-      this.getData({
-        page: this.page,
-        offset: this.pageSize
-      })
+      console.log(this.page);
+      this.getData(this.params);
     },
     getData(params){
-      if(this.marks.length != 0){
-          this.map.remove(this.marks);
-      }
+      this.map.remove(this.marks);
+      this.marks = []
 
+      console.log("requst");
       request({
         url: '/getHouses',
         params: params,
         method: "GET"
       }).then(res => {
-        this.list = res.data;
         this.total = res.total;
-
-        let start = (this.page-1) * this.pageSize;
-        let end = this.page * this.pageSize;
-        console.log(this.list)
+        // let start = (this.page-1) * this.pageSize;
+        // let end = this.page * this.pageSize;
+        // for (let i=start; i<end; i++) {
+        //   this.list[i-start] = res.data[i];
+        // }
+        this.list = res['data'];
+        console.log(res)
+        console.log(this.list);
         //标记点
-        for (let i=start; i<end; i++) {
+        for (let i=0; i<this.pageSize; i++) {
+
           let tmp = this.list[i]['location'].split(',');
           let p = [Number(tmp[0]), Number(tmp[1])];
 
@@ -296,23 +323,10 @@ export default {
             label: {},
             clickable: true
           });
-
           this.marks[i].price = String(this.list[i].totalPrice);
-
           this.marks[i].on('click', this.showInfo);
-
-          // //构建自定义信息窗体，似乎只能有一个
-          // this.infoWins[index] = new AMap.InfoWindow({
-          //   position: p,
-          //   anchor: 'top',
-          //   content: '这是信息窗体！',
-          // });
-          // this.infoWins[index].open(this.map);
         }
-
         this.map.setFitView();
-
-
       }).catch(err => {
         console.log(err);
       });
@@ -345,8 +359,11 @@ export default {
     hideMarker(index) {
       // console.log("hide");
     },
-    priceRangeChange(range) {
-      console.log(this.priceRange);
+    priceRangeChange() {
+      this.priceDialogVisible = false
+      this.page = 1;
+      console.log(this.params);
+      this.getData(this.params);
     },
 
   }
