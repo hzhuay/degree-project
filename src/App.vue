@@ -7,7 +7,7 @@
       <router-link to="/list">List</router-link>
 
       <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" router
-               style="height: 60px; width: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: #f6f6f6; z-index: 999">
+               style="">
         <el-menu-item index="/">Home</el-menu-item>
         <el-menu-item index="about">Predict</el-menu-item>
         <el-menu-item index="list">List</el-menu-item>
@@ -77,7 +77,16 @@
 }
 
 .head-place{
-  height: 70px;
+  height: 50px;
   width: 100%;
+}
+
+.el-menu{
+  height: 40px; width: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: #f6f6f6; z-index: 999
+}
+
+.el-menu-item{
+  height: 40px !important;
+  line-height: 40px !important;
 }
 </style>

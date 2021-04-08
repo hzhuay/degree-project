@@ -1,7 +1,7 @@
 module.exports = {
-    // publicPath: './',
+    publicPath: './',
     // outputDir:'dist',
-    // assetsDir:'static',
+    assetsDir:'static',
     configureWebpack: {
         // externals: { AMap: 'AMap' },
         resolve: {
@@ -15,19 +15,19 @@ module.exports = {
         }
     },
     devServer: {
-        port: '8080',
+        port: '5000',
         open: true,
         proxy: {//解决跨域问题
-            '/webapi': {
+            '/api': {
                 // 此处的写法，目的是为了 将 /api 替换成 https://autumnfish.cn/
-                target: '127.0.0.1:8080',
+                target: 'http://localhost:5000',
                 // 允许跨域
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {
-                    '^/webapi': ''
+                    '^/api': '/'
                 }
             }
         }
-    }
+    },
 };

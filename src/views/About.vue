@@ -17,6 +17,18 @@
               </el-form-item>
             </el-col>
 
+            <el-col :span="12">
+              <el-form-item label="总楼层数">
+                <el-input v-model="form.totalFloor" placeholder="请输入内容"></el-input>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+              <el-form-item label="梯户比例">
+                  <el-input v-model="form.elevatorRate" placeholder="请输入内容"></el-input>
+              </el-form-item>
+            </el-col>
+
             <el-col :span="24">
               <el-form-item label="朝向">
                 <el-checkbox-group v-model="form.direction">
@@ -106,11 +118,8 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
-              <el-form-item label="总楼层数">
-                <el-input v-model="form.totalFloor" placeholder="请输入内容"></el-input>
-              </el-form-item>
-            </el-col>
+
+
 
             <el-col :span="12">
               <el-form-item label="楼层">
@@ -128,26 +137,30 @@
             <el-col :span="24">
 
               <el-form-item label="房间分配">
-                <el-col :span="6">
+                <el-col :span="5">
                   <el-input v-model="form.room" placeholder="请输入内容">
                     <template slot="append">室</template>
                   </el-input>
                 </el-col>
-                <el-col :span="6">
+                <el-col :span="1" style="color:white;">-</el-col>
+                <el-col :span="5">
                   <el-input v-model="form.hall" placeholder="请输入内容">
                     <template slot="append">厅</template>
                   </el-input>
                 </el-col>
-                <el-col :span="6">
+                <el-col :span="1" style="color:white;">-</el-col>
+                <el-col :span="5">
                   <el-input v-model="form.toilet" placeholder="请输入内容">
                     <template slot="append">卫</template>
                   </el-input>
                 </el-col>
-                <el-col :span="6">
+                <el-col :span="1" style="color:white;">-</el-col>
+                <el-col :span="5">
                   <el-input v-model="form.kitchen" placeholder="请输入内容">
                     <template slot="append">厨</template>
                   </el-input>
                 </el-col>
+                <el-col :span="1" style="color:white;">-</el-col>
               </el-form-item>
 
             </el-col>
@@ -200,6 +213,7 @@ export default{
         toilet: 0,
         kitchen: 0,
         elevator: true,
+        elevatorRate: 0,
         decoration: 0,
         structure: 0,
         totalFloor: 0,
@@ -373,7 +387,6 @@ export default{
     bottom: 0px;
     width: 40%;
     top: 70px;
-    margin-top: 10px;
   }
 
   .left-block{

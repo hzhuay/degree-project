@@ -3,27 +3,28 @@
     <div class="left-block">
 <!--      <div>{{this.list}}</div>-->
 <!--      筛选区-->
-      <div style=" background-color: #2c3e50" class="select-block">
+      <div class="select-block">
 
 
-        <el-button @click="dialogFormVisible = true">地区</el-button>
-        <el-dialog title="收货地址" :visible.sync="dialogFormVisible" class="select-dialog">
-          <div class="block">
-            <span class="demonstration">默认 click 触发子菜单</span>
-            <el-cascader
-              v-model="value"
-              :options="options"
-
-              ></el-cascader>
+        <el-button @click="dialogFormVisible = true" size="mini" :type="location[0] == null ? '' : 'primary'" class="select-button">{{ location[0] == null ? "Location" : location[1] }}</el-button>
+        <el-dialog title="Select district and block" :visible.sync="dialogFormVisible" class="select-dialog-price">
+          <div class="block" style="text-align: center">
+            <el-cascader v-model="location" :options="options">
+              <template slot-scope="{ node, data }">
+                <span>{{ data.label }}</span>
+                <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+              </template>
+            </el-cascader>
           </div>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+            <el-button @click="dialogFormVisible = false">Cancel</el-button>
+            <el-button type="primary" @click="locationChange" >Confirm</el-button>
           </div>
         </el-dialog>
 
         <div style="position: relative; display: inline-block">
-          <el-button @click="priceDialogVisible = true" type="">price</el-button>
+          <el-button @click="priceDialogVisible=true" :type="priceRange[0]==0&&priceRange[1]==maxPriceRange ? '' : 'primary'"
+                     class="select-button" size="mini">{{ priceRangeBtn }}</el-button>
           <el-dialog title="Price Range" :visible.sync="priceDialogVisible" class="select-dialog-price">
             <div class="block">
               <div>
@@ -48,15 +49,14 @@
               <el-slider v-model="priceRange" range :show-tooltip="false" :min="0" :max="maxPriceRange" :step="1"></el-slider>
             </div>
             <div slot="footer" class="dialog-footer">
-              <el-button @click="priceDialogVisible = false">取 消</el-button>
-              <el-button type="primary" @click="priceRangeChange">确 定</el-button>
+              <el-button @click="priceDialogVisible = false">Cancel</el-button>
+              <el-button type="primary" @click="priceRangeChange">Confirm</el-button>
             </div>
           </el-dialog>
         </div>
 
-        <div style="position: relative; display: inline-block">
-          <el-button @click="areaDialogVisible = true" type="">area</el-button>
-        </div>
+        <el-button @click="areaDialogVisible = true" type="" class="select-button" size="mini">Area</el-button>
+
 
 <!--        <vc-calendar :columns="$screens({ default: 1, lg: 2 })"></vc-calendar>-->
 
@@ -71,7 +71,7 @@
               <el-row :gutter="20" style="height: 100%">
                 <el-col :span="16" style="height: 100%">
                   <div>
-                    <div class="house-info house-title" style="">{{item.name}}</div>
+                    <div class="house-info house-title" style="">{{item.title}}</div>
                     <div class="house-info" style="">
                       <i class="el-icon-location-outline"></i>
                       {{item.community}}
@@ -83,10 +83,10 @@
                     </div>
                     <div class="house-info">
                       <i class="el-icon-collection-tag"></i>
-                      <el-tag size="small" class="house-tag">房本5年</el-tag>
-                      <el-tag size="small" type="success" class="house-tag">房本5年</el-tag>
-                      <el-tag size="small" type="warning" class="house-tag">房本5年</el-tag>
-                      <el-tag size="small" type="danger" class="house-tag">房本5年</el-tag>
+                      <el-tag size="small" class="house-tag">Good</el-tag>
+                      <el-tag size="small" type="success" class="house-tag">Nice</el-tag>
+                      <el-tag size="small" type="warning" class="house-tag">Perfect</el-tag>
+                      <el-tag size="small" type="danger" class="house-tag">Wonderful</el-tag>
 
 
                     </div>
@@ -96,9 +96,9 @@
                 <el-col :span="8" style="height: 100%; border-left: rgba(0,0,0,0.1) solid 1px">
                   <div class="priceInfo">
                   <span class="totalPrice">
-                    {{item.totalPrice}}
+                    {{item.total_price.toFixed(2)}}
                   </span>
-                    万
+                    million
                   </div>
                 </el-col>
               </el-row>
@@ -166,7 +166,7 @@
   -moz-line-clamp: 2;
   -moz-box-orient: vertical;
   word-wrap: break-word;
-  word-break: break-all;
+  word-break: normal;
   white-space: normal;
 }
 .el-divider--vertical{
@@ -188,6 +188,10 @@
   width: 30%;
 }
 
+.select-button{
+  margin-left: 10px;
+}
+
 </style>
 
 <style>
@@ -205,11 +209,15 @@
   /*top: 40px;*/
   /*left: 30px;*/
 }
+.el-card__body{
+  padding: 0px;
+}
 </style>
 
 <script>
 import {request} from "@/network/request";
-import district_data from "@/components/district_data";
+import district_data from "@/utils/district_data";
+import {format} from "@/utils/funs";
 
 
 export default {
@@ -223,41 +231,50 @@ export default {
       infoWin: {},
       total: 30,
       pageSize: 10,
+      cnt: 10,
       page: 1,
       dialogFormVisible: false,
       priceDialogVisible: false,
-      maxPriceRange: 2000,
-      priceRange: [0,2000],
+      maxPriceRange: 20,
+      priceRange: [0,20],
       formLabelWidth: '120px',
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
       options: district_data.options,
       value: '',
-      selected: -1
+      selected: -1,
+      location: [null, null]
+
 
     }
   },
   computed: {
     maxPrice() {
-      return this.priceRange[1] == this.maxPriceRange ? this.priceRange[1] + '万+' : this.priceRange[1] + '万';
+      return this.priceRange[1] == this.maxPriceRange ? this.priceRange[1] + 'm+' : this.priceRange[1] + 'm';
     },
     minPrice() {
-      return this.priceRange[0] + '万';
+      return this.priceRange[0] + 'm';
     },
     params() {
       return {
         page: this.page,
         offset: this.pageSize,
         minPrice: this.priceRange[0],
-        maxPrice: this.priceRange[1]
+        maxPrice: this.priceRange[1],
+        district: this.location[0],
+        block: this.location[1]
+      }
+    },
+    locationSelected() {
+      return this.location[0] != null;
+    },
+    priceRangeBtn() {
+      if(this.priceRange[0] == 0 && this.priceRange[1] == this.maxPriceRange){
+        return "Price";
+      }else if(this.priceRange[0] == 0 && this.priceRange[1] != this.maxPriceRange){
+        return format("< {0} million", this.priceRange[1]);
+      }else if(this.priceRange[0] != 0 && this.priceRange[1] == this.maxPriceRange){
+        return format("> {0} million", this.priceRange[0]);
+      }else if(this.priceRange[0] != 0 && this.priceRange[1] != this.maxPriceRange){
+        return format("¥ {0} m - ¥ {1} m", this.priceRange[0], this.priceRange[1]);
       }
     }
   },
@@ -271,6 +288,8 @@ export default {
     });
 
     this.getData(this.params);
+
+    console.log(this.location);
   },
   created() {
 
@@ -294,6 +313,7 @@ export default {
     getData(params){
       this.map.remove(this.marks);
       this.marks = []
+      this.selected = -1
 
       console.log("requst");
       request({
@@ -308,10 +328,11 @@ export default {
         //   this.list[i-start] = res.data[i];
         // }
         this.list = res['data'];
-        console.log(res)
-        console.log(this.list);
+        // console.log(res)
+        // console.log(this.list);
+        // console.log(res['cnt'])9;
         //标记点
-        for (let i=0; i<this.pageSize; i++) {
+        for (let i=0; i<res['cnt']; i++) {
 
           let tmp = this.list[i]['location'].split(',');
           let p = [Number(tmp[0]), Number(tmp[1])];
@@ -326,6 +347,7 @@ export default {
           this.marks[i].price = String(this.list[i].totalPrice);
           this.marks[i].on('click', this.showInfo);
         }
+        // console.log(this.marks);
         this.map.setFitView();
       }).catch(err => {
         console.log(err);
@@ -365,6 +387,14 @@ export default {
       console.log(this.params);
       this.getData(this.params);
     },
+    locationChange() {
+      console.log("选择地址了");
+      console.log(this.location);
+      console.log(typeof this.location);
+      this.dialogFormVisible = false;
+      this.page = 1;
+      this.getData(this.params);
+    }
 
   }
 }
