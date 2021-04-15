@@ -1,10 +1,12 @@
 import axios from 'axios'
+import {isNumber} from "@/utils/funs";
 
 export function request(config) {
     // 创建axios实例
     const instance = axios.create({
         baseURL: '/api',
-        timeout: 5000
+        timeout: 5000,
+
     })
 
     // 请求拦截器
@@ -28,6 +30,55 @@ export function request(config) {
 
     // 发送网络请求
     return instance(config);
+}
+
+export function post(config) {
+  const instance = axios.create({
+    baseURL: '/api',
+    timeout: 5000,
+    method: "POST",
+    // transformRequest: [function (data) {
+    //   let ret = ''
+    //   for (let it in data) {
+    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+    //   }
+    //   return ret
+    // }],
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  // 请求拦截器
+  instance.interceptors.request.use(con => {
+    // 这里可以对请求的配置进行修改，比如说config不符合服务器要求
+    // 或者每次发送网络请求时，都希望在前端界面中显示一个图标
+    // 某些网络网络请求，比如说登录时需要token，可以在前端验证
+    // 拦截下来的请求配置一定要返回回去，不然请求就无法完成
+    let form = con.data;
+    console.log(form);
+    for (let v in form){
+      if(typeof(form[v]) == 'string' && isNumber(form[v])){
+        form[v] = Number(form[v]);
+      }
+    }
+    form = JSON.stringify(form)
+    console.log(con.data);
+    return con;
+  }, err => {
+      console.log(err);
+  })
+
+  // 响应拦截器
+  instance.interceptors.response.use(res => {
+    // console.log(res)
+    return res.data;
+  }, err => {
+    console.log(err);
+  })
+
+  // 发送网络请求
+  return instance(config);
 }
 
 /*

@@ -1,16 +1,24 @@
 <template>
   <div id="app">
     <div id="nav" class="fix-head">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/learn">Learn</router-link> |
-      <router-link to="/list">List</router-link>
+<!--      <router-link to="/">Home</router-link> |-->
+<!--      <router-link to="/about">About</router-link> |-->
+<!--      <router-link to="/learn">Learn</router-link> |-->
+<!--      <router-link to="/list">List</router-link>-->
+
 
       <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" router
-               style="">
+               style="display: flow">
         <el-menu-item index="/">Home</el-menu-item>
         <el-menu-item index="about">Predict</el-menu-item>
         <el-menu-item index="list">List</el-menu-item>
+        <el-menu-item style="float: right;">
+          <el-input
+            placeholder="请输入内容"
+            prefix-icon="el-icon-search"
+            v-model="input3" size="small" style=" vertical-align: middle">
+          </el-input>
+        </el-menu-item>
 
       </el-menu>
     </div>
@@ -32,7 +40,8 @@
         name: 'Jack',
         userId: 1,
         isfix: false,
-        activeIndex: '1'
+        activeIndex: '1',
+        input3: ''
       }
     },
     methods: {
@@ -77,7 +86,7 @@
 }
 
 .head-place{
-  height: 50px;
+  height: 40px;
   width: 100%;
 }
 

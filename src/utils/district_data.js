@@ -1,387 +1,460 @@
 export default {
   options: [{
     'value': 'dongcheng',
-    'label': '东城',
-    'children': [{'value': 'andingmen', 'label': '安定门'}, {'value': 'anzhen', 'label': '安贞'}, {
-      'value': 'beijingnanzhan',
-      'label': '北京南站'
-    }, {'value': 'chaoyangmennei', 'label': '朝阳门内'}, {
-      'value': 'chaoyangmenwai',
-      'label': '朝阳门外'
-    }, {'value': 'chongwenmen', 'label': '崇文门'}, {'value': 'dengshikou', 'label': '灯市口'}, {
-      'value': 'dianmen',
-      'label': '地安门'
-    }, {'value': 'dongdan', 'label': '东单'}, {'value': 'donghuashi', 'label': '东花市'}, {
-      'value': 'dongsi',
-      'label': '东四'
-    }, {'value': 'dongzhimen', 'label': '东直门'}, {'value': 'gongti', 'label': '工体'}, {
-      'value': 'guangqumen',
-      'label': '广渠门'
-    }, {'value': 'hepingli', 'label': '和平里'}, {'value': 'jianguomennei', 'label': '建国门内'}, {
+    'label': 'DongCheng',
+    'children': [{'value': 'andingmen', 'label': 'AnDingMen'}, {
+      'value': 'anzhen',
+      'label': 'AnZhen'
+    }, {'value': 'beijingnanzhan', 'label': 'BeiJingNanZhan'}, {
+      'value': 'chaoyangmennei',
+      'label': 'ZhaoYangMenNei'
+    }, {'value': 'chaoyangmenwai', 'label': 'ZhaoYangMenWai'}, {
+      'value': 'chongwenmen',
+      'label': 'ChongWenMen'
+    }, {'value': 'dengshikou', 'label': 'DengShiKou'}, {'value': 'dianmen', 'label': 'DiAnMen'}, {
+      'value': 'dongdan',
+      'label': 'DongDan'
+    }, {'value': 'donghuashi', 'label': 'DongHuaShi'}, {'value': 'dongsi', 'label': 'DongSi'}, {
+      'value': 'dongzhimen',
+      'label': 'DongZhiMen'
+    }, {'value': 'gongti', 'label': 'GongTi'}, {'value': 'guangqumen', 'label': 'GuangQuMen'}, {
+      'value': 'hepingli',
+      'label': 'HePingLi'
+    }, {'value': 'jianguomennei', 'label': 'JianGuoMenNei'}, {
       'value': 'jianguomenwai',
-      'label': '建国门外'
-    }, {'value': 'jiaodaokou', 'label': '交道口'}, {'value': 'jinbaojie', 'label': '金宝街'}, {
-      'value': 'liupukang',
-      'label': '六铺炕'
-    }, {'value': 'puhuangyu', 'label': '蒲黄榆'}, {'value': 'qianmen', 'label': '前门'}, {
-      'value': 'taoranting',
-      'label': '陶然亭'
-    }, {'value': 'tiantan', 'label': '天坛'}, {'value': 'xidan', 'label': '西单'}, {
-      'value': 'xiluoyuan',
-      'label': '西罗园'
-    }, {'value': 'yangqiao', 'label': '洋桥'}, {'value': 'yongdingmen', 'label': '永定门'}, {
-      'value': 'zuoanmen',
-      'label': '左安门'
-    }]
+      'label': 'JianGuoMenWai'
+    }, {'value': 'jiaodaokou', 'label': 'JiaoDaoKou'}, {
+      'value': 'jinbaojie',
+      'label': 'JinBaoJie'
+    }, {'value': 'liupukang', 'label': 'LiuPuKang'}, {'value': 'puhuangyu', 'label': 'PuHuangYu'}, {
+      'value': 'qianmen',
+      'label': 'QianMen'
+    }, {'value': 'taoranting', 'label': 'TaoRanTing'}, {'value': 'tiantan', 'label': 'TianTan'}, {
+      'value': 'xidan',
+      'label': 'XiDan'
+    }, {'value': 'xiluoyuan', 'label': 'XiLuoYuan'}, {
+      'value': 'yangqiao',
+      'label': 'YangQiao'
+    }, {'value': 'yongdingmen', 'label': 'YongDingMen'}, {'value': 'zuoanmen', 'label': 'ZuoAnMen'}]
   }, {
     'value': 'xicheng',
-    'label': '西城',
-    'children': [{'value': 'baizhifang', 'label': '白纸坊'}, {
+    'label': 'XiCheng',
+    'children': [{'value': 'baizhifang', 'label': 'BaiZhiFang'}, {
       'value': 'caihuying',
-      'label': '菜户营'
-    }, {'value': 'changchunjie', 'label': '长椿街'}, {'value': 'chegongzhuang', 'label': '车公庄'}, {
-      'value': 'chongwenmen',
-      'label': '崇文门'
-    }, {'value': 'deshengmen', 'label': '德胜门'}, {'value': 'dianmen', 'label': '地安门'}, {
-      'value': 'fuchengmen',
-      'label': '阜成门'
-    }, {'value': 'guanganmen', 'label': '广安门'}, {'value': 'guanyuan', 'label': '官园'}, {
+      'label': 'CaiHuYing'
+    }, {'value': 'changchunjie', 'label': 'ChangChunJie'}, {
+      'value': 'chegongzhuang',
+      'label': 'CheGongZhuang'
+    }, {'value': 'chongwenmen', 'label': 'ChongWenMen'}, {
+      'value': 'deshengmen',
+      'label': 'DeShengMen'
+    }, {'value': 'dianmen', 'label': 'DiAnMen'}, {'value': 'fuchengmen', 'label': 'FuChengMen'}, {
+      'value': 'guanganmen',
+      'label': 'GuangAnMen'
+    }, {'value': 'guanyuan', 'label': 'GuanYuan'}, {
       'value': 'jinrongjie',
-      'label': '金融街'
-    }, {'value': 'liupukang', 'label': '六铺炕'}, {'value': 'madian', 'label': '马甸'}, {
+      'label': 'JinRongJie'
+    }, {'value': 'liupukang', 'label': 'LiuPuKang'}, {'value': 'madian', 'label': 'MaDian'}, {
       'value': 'maliandao',
-      'label': '马连道'
-    }, {'value': 'muxidi', 'label': '木樨地'}, {'value': 'niujie', 'label': '牛街'}, {
+      'label': 'MaLianDao'
+    }, {'value': 'muxidi', 'label': 'MuXiDi'}, {'value': 'niujie', 'label': 'NiuJie'}, {
       'value': 'taipingqiao',
-      'label': '太平桥'
-    }, {'value': 'taoranting', 'label': '陶然亭'}, {'value': 'tianningsi', 'label': '天宁寺'}, {
-      'value': 'xidan',
-      'label': '西单'
-    }, {'value': 'xinjiekou', 'label': '新街口'}, {'value': 'xisi', 'label': '西四'}, {
-      'value': 'xizhimen',
-      'label': '西直门'
-    }, {'value': 'xuanwumen', 'label': '宣武门'}, {'value': 'youanmennei', 'label': '右安门内'}, {
-      'value': 'yuetan',
-      'label': '月坛'
-    }]
+      'label': 'TaiPingQiao'
+    }, {'value': 'taoranting', 'label': 'TaoRanTing'}, {
+      'value': 'tianningsi',
+      'label': 'TianNingSi'
+    }, {'value': 'xidan', 'label': 'XiDan'}, {'value': 'xinjiekou', 'label': 'XinJieKou'}, {
+      'value': 'xisi',
+      'label': 'XiSi'
+    }, {'value': 'xizhimen', 'label': 'XiZhiMen'}, {
+      'value': 'xuanwumen1',
+      'label': 'XuanWuMen'
+    }, {'value': 'youanmennei1', 'label': 'YouAnMenNei'}, {'value': 'yuetan', 'label': 'YueTan'}]
   }, {
     'value': 'chaoyang',
-    'label': '朝阳',
-    'children': [{'value': 'andingmen', 'label': '安定门'}, {
+    'label': 'ZhaoYang',
+    'children': [{'value': 'andingmen', 'label': 'AnDingMen'}, {
       'value': 'anzhen',
-      'label': '安贞'
-    }, {'value': 'aolinpikegongyuan', 'label': '奥林匹克公园'}, {'value': 'baiziwan', 'label': '百子湾'}, {
-      'value': 'beigongda',
-      'label': '北工大'
-    }, {'value': 'beiyuan', 'label': '北苑'}, {'value': 'cbd', 'label': 'CBD'}, {
-      'value': 'changying',
-      'label': '常营'
-    }, {'value': 'chaoqing', 'label': '朝青'}, {'value': 'chaoyanggongyuan', 'label': '朝阳公园'}, {
+      'label': 'AnZhen'
+    }, {'value': 'aolinpikegongyuan1', 'label': 'AoLinPiKeGongYuan'}, {
+      'value': 'baiziwan',
+      'label': 'BaiZiWan'
+    }, {'value': 'beigongda', 'label': 'BeiGongDa'}, {'value': 'beiyuan', 'label': 'BeiYuan'}, {
+      'value': 'cbd',
+      'label': 'Cbd'
+    }, {'value': 'changying', 'label': 'ChangYing'}, {
+      'value': 'chaoqing',
+      'label': 'ZhaoQing'
+    }, {'value': 'chaoyanggongyuan', 'label': 'ZhaoYangGongYuan'}, {
       'value': 'chaoyangmenwai',
-      'label': '朝阳门外'
-    }, {'value': 'chengshousi', 'label': '成寿寺'}, {'value': 'dashanzi', 'label': '大山子'}, {
-      'value': 'dawanglu',
-      'label': '大望路'
-    }, {'value': 'dingfuzhuang', 'label': '定福庄'}, {'value': 'dongba', 'label': '东坝'}, {
-      'value': 'dongdaqiao',
-      'label': '东大桥'
-    }, {'value': 'dongzhimen', 'label': '东直门'}, {'value': 'dougezhuang', 'label': '豆各庄'}, {
+      'label': 'ZhaoYangMenWai'
+    }, {'value': 'chengshousi', 'label': 'ChengShouSi'}, {
+      'value': 'dashanzi',
+      'label': 'DaShanZi'
+    }, {'value': 'dawanglu', 'label': 'DaWangLu'}, {
+      'value': 'dingfuzhuang',
+      'label': 'DingFuZhuang'
+    }, {'value': 'dongba', 'label': 'DongBa'}, {'value': 'dongdaqiao', 'label': 'DongDaQiao'}, {
+      'value': 'dongzhimen',
+      'label': 'DongZhiMen'
+    }, {'value': 'dougezhuang', 'label': 'DouGeZhuang'}, {
       'value': 'fangzhuang',
-      'label': '方庄'
-    }, {'value': 'fatou', 'label': '垡头'}, {'value': 'ganluyuan', 'label': '甘露园'}, {
+      'label': 'FangZhuang'
+    }, {'value': 'fatou', 'label': 'FaTou'}, {'value': 'ganluyuan', 'label': 'GanLuYuan'}, {
       'value': 'gaobeidian',
-      'label': '高碑店'
-    }, {'value': 'gongti', 'label': '工体'}, {'value': 'guangqumen', 'label': '广渠门'}, {
+      'label': 'GaoBeiDian'
+    }, {'value': 'gongti', 'label': 'GongTi'}, {'value': 'guangqumen', 'label': 'GuangQuMen'}, {
       'value': 'guanzhuang',
-      'label': '管庄'
-    }, {'value': 'guozhan', 'label': '国展'}, {'value': 'hepingli', 'label': '和平里'}, {
+      'label': 'GuanZhuang'
+    }, {'value': 'guozhan', 'label': 'GuoZhan'}, {'value': 'hepingli', 'label': 'HePingLi'}, {
       'value': 'hongmiao',
-      'label': '红庙'
-    }, {'value': 'huanlegu', 'label': '欢乐谷'}, {'value': 'huaweiqiao', 'label': '华威桥'}, {
-      'value': 'huixinxijie',
-      'label': '惠新西街'
-    }, {'value': 'jianguomenwai', 'label': '建国门外'}, {'value': 'jianxiangqiao', 'label': '健翔桥'}, {
+      'label': 'HongMiao'
+    }, {'value': 'huanlegu', 'label': 'HuanLeGu'}, {
+      'value': 'huaweiqiao',
+      'label': 'HuaWeiQiao'
+    }, {'value': 'huixinxijie', 'label': 'HuiXinXiJie'}, {
+      'value': 'jianguomenwai',
+      'label': 'JianGuoMenWai'
+    }, {'value': 'jianxiangqiao', 'label': 'JianXiangQiao'}, {
       'value': 'jinsong',
-      'label': '劲松'
-    }, {'value': 'jiuxianqiao', 'label': '酒仙桥'}, {'value': 'liangmaqiao', 'label': '亮马桥'}, {
-      'value': 'lishuiqiao',
-      'label': '立水桥'
-    }, {'value': 'madian', 'label': '马甸'}, {'value': 'mudanyuan', 'label': '牡丹园'}, {
-      'value': 'nanshatan',
-      'label': '南沙滩'
-    }, {'value': 'nongzhanguan', 'label': '农展馆'}, {'value': 'panjiayuan', 'label': '潘家园'}, {
+      'label': 'JingSong'
+    }, {'value': 'jiuxianqiao', 'label': 'JiuXianQiao'}, {
+      'value': 'liangmaqiao',
+      'label': 'LiangMaQiao'
+    }, {'value': 'lishuiqiao', 'label': 'LiShuiQiao'}, {'value': 'madian', 'label': 'MaDian'}, {
+      'value': 'mudanyuan',
+      'label': 'MuDanYuan'
+    }, {'value': 'nanshatan', 'label': 'NanShaTan'}, {
+      'value': 'nongzhanguan',
+      'label': 'NongZhanGuan'
+    }, {'value': 'panjiayuan', 'label': 'PanJiaYuan'}, {
       'value': 'sanlitun',
-      'label': '三里屯'
-    }, {'value': 'sanyuanqiao', 'label': '三元桥'}, {'value': 'shaoyaoju', 'label': '芍药居'}, {
-      'value': 'shibalidian',
-      'label': '十八里店'
-    }, {'value': 'shifoying', 'label': '石佛营'}, {'value': 'shilibao', 'label': '十里堡'}, {
-      'value': 'shilihe',
-      'label': '十里河'
-    }, {'value': 'shoudoujichang', 'label': '首都机场'}, {'value': 'shuangjing', 'label': '双井'}, {
+      'label': 'SanLiTun'
+    }, {'value': 'sanyuanqiao', 'label': 'SanYuanQiao'}, {
+      'value': 'shaoyaoju',
+      'label': 'ShaoYaoJu'
+    }, {'value': 'shibalidian', 'label': 'ShiBaLiDian'}, {
+      'value': 'shifoying',
+      'label': 'ShiFoYing'
+    }, {'value': 'shilibao', 'label': 'ShiLiBao'}, {'value': 'shilihe', 'label': 'ShiLiHe'}, {
+      'value': 'shoudoujichang',
+      'label': 'ShouDuJiChang'
+    }, {'value': 'shuangjing', 'label': 'ShuangJing'}, {
       'value': 'shuangqiao',
-      'label': '双桥'
-    }, {'value': 'sihui', 'label': '四惠'}, {'value': 'songjiazhuang', 'label': '宋家庄'}, {
-      'value': 'taiyanggong',
-      'label': '太阳宫'
-    }, {'value': 'tianshuiyuan', 'label': '甜水园'}, {'value': 'tongzhoubeiyuan', 'label': '通州北苑'}, {
+      'label': 'ShuangQiao'
+    }, {'value': 'sihui', 'label': 'SiHui'}, {
+      'value': 'songjiazhuang',
+      'label': 'SongJiaZhuang'
+    }, {'value': 'taiyanggong', 'label': 'TaiYangGong'}, {
+      'value': 'tianshuiyuan',
+      'label': 'TianShuiYuan'
+    }, {'value': 'tongzhoubeiyuan', 'label': 'TongZhouBeiYuan'}, {
       'value': 'tuanjiehu',
-      'label': '团结湖'
-    }, {'value': 'wangjing', 'label': '望京'}, {'value': 'xibahe', 'label': '西坝河'}, {
+      'label': 'TuanJieHu'
+    }, {'value': 'wangjing', 'label': 'WangJing'}, {'value': 'xibahe', 'label': 'XiBaHe'}, {
       'value': 'yansha',
-      'label': '燕莎'
-    }, {'value': 'yayuncun', 'label': '亚运村'}, {'value': 'yayuncunxiaoying', 'label': '亚运村小营'}, {
-      'value': 'zhaoyangqita',
-      'label': '朝阳其它'
-    }, {'value': 'zhongyangbieshuqu', 'label': '中央别墅区'}]
+      'label': 'YanSha'
+    }, {'value': 'yayuncun', 'label': 'YaYunCun'}, {
+      'value': 'yayuncunxiaoying',
+      'label': 'YaYunCunXiaoYing'
+    }, {'value': 'zhaoyangqita', 'label': 'ZhaoYangQiTa'}, {'value': 'zhongyangbieshuqu', 'label': 'ZhongYangBieShuQu'}]
   }, {
     'value': 'haidian',
-    'label': '海淀',
-    'children': [{'value': 'anningzhuang', 'label': '安宁庄'}, {
-      'value': 'aolinpikegongyuan',
-      'label': '奥林匹克公园'
-    }, {'value': 'baishiqiao', 'label': '白石桥'}, {'value': 'beitaipingzhuang', 'label': '北太平庄'}, {
-      'value': 'changwa',
-      'label': '厂洼'
-    }, {'value': 'dinghuisi', 'label': '定慧寺'}, {'value': 'erlizhuang', 'label': '二里庄'}, {
-      'value': 'ganjiakou',
-      'label': '甘家口'
-    }, {'value': 'gongzhufen', 'label': '公主坟'}, {
-      'value': 'haidianbeibuxinqu',
-      'label': '海淀北部新区'
-    }, {'value': 'haidianqita', 'label': '海淀其它'}, {'value': 'junbo', 'label': '军博'}, {
-      'value': 'liuliqiao',
-      'label': '六里桥'
-    }, {'value': 'madian', 'label': '马甸'}, {'value': 'malianwa', 'label': '马连洼'}, {
-      'value': 'mudanyuan',
-      'label': '牡丹园'
-    }, {'value': 'qinghe', 'label': '清河'}, {'value': 'shangdi', 'label': '上地'}, {
+    'label': 'HaiDian',
+    'children': [{'value': 'anningzhuang', 'label': 'AnNingZhuang'}, {
+      'value': 'aolinpikegongyuan1',
+      'label': 'AoLinPiKeGongYuan'
+    }, {'value': 'baishiqiao', 'label': 'BaiShiQiao'}, {
+      'value': 'beitaipingzhuang',
+      'label': 'BeiTaiPingZhuang'
+    }, {'value': 'changwa', 'label': 'ChangWa'}, {'value': 'dinghuisi', 'label': 'DingHuiSi'}, {
+      'value': 'erlizhuang',
+      'label': 'ErLiZhuang'
+    }, {'value': 'ganjiakou', 'label': 'GanJiaKou'}, {
+      'value': 'gongzhufen',
+      'label': 'GongZhuFen'
+    }, {'value': 'haidianbeibuxinqu', 'label': 'HaiDianBeiBuXinQu'}, {
+      'value': 'haidianqita',
+      'label': 'HaiDianQiTa'
+    }, {'value': 'junbo', 'label': 'JunBo'}, {'value': 'liuliqiao', 'label': 'LiuLiQiao'}, {
+      'value': 'madian',
+      'label': 'MaDian'
+    }, {'value': 'malianwa', 'label': 'MaLianWa'}, {'value': 'mudanyuan', 'label': 'MuDanYuan'}, {
+      'value': 'qinghe1',
+      'label': 'QingHe'
+    }, {'value': 'shangdi', 'label': 'ShangDi'}, {
       'value': 'shijicheng',
-      'label': '世纪城'
-    }, {'value': 'shuangyushu', 'label': '双榆树'}, {'value': 'sijiqing', 'label': '四季青'}, {
-      'value': 'suzhouqiao',
-      'label': '苏州桥'
-    }, {'value': 'tiancun', 'label': '田村'}, {'value': 'wanliu', 'label': '万柳'}, {
-      'value': 'wanshoulu',
-      'label': '万寿路'
-    }, {'value': 'weigongcun', 'label': '魏公村'}, {'value': 'wudaokou', 'label': '五道口'}, {
-      'value': 'wukesong',
-      'label': '五棵松'
-    }, {'value': 'xiaoxitian', 'label': '小西天'}, {'value': 'xibeiwang', 'label': '西北旺'}, {
-      'value': 'xierqi',
-      'label': '西二旗'
-    }, {'value': 'xinjiekou', 'label': '新街口'}, {'value': 'xisanqi', 'label': '西三旗'}, {
-      'value': 'xishan2',
-      'label': '西山'
-    }, {'value': 'xizhimen', 'label': '西直门'}, {'value': 'xueyuanlu', 'label': '学院路'}, {
+      'label': 'ShiJiCheng'
+    }, {'value': 'shuangyushu', 'label': 'ShuangYuShu'}, {
+      'value': 'sijiqing',
+      'label': 'SiJiQing'
+    }, {'value': 'suzhouqiao', 'label': 'SuZhouQiao'}, {'value': 'tiancun', 'label': 'TianCun'}, {
+      'value': 'wanliu',
+      'label': 'WanLiu'
+    }, {'value': 'wanshoulu', 'label': 'WanShouLu'}, {
+      'value': 'weigongcun',
+      'label': 'WeiGongCun'
+    }, {'value': 'wudaokou', 'label': 'WuDaoKou'}, {'value': 'wukesong', 'label': 'WuKeSong'}, {
+      'value': 'xiaoxitian',
+      'label': 'XiaoXiTian'
+    }, {'value': 'xibeiwang', 'label': 'XiBeiWang'}, {'value': 'xierqi', 'label': 'XiErQi'}, {
+      'value': 'xinjiekou',
+      'label': 'XinJieKou'
+    }, {'value': 'xisanqi', 'label': 'XiSanQi'}, {'value': 'xishan2', 'label': 'XiShan'}, {
+      'value': 'xizhimen',
+      'label': 'XiZhiMen'
+    }, {'value': 'xueyuanlu', 'label': 'XueYuanLu'}, {
       'value': 'yangzhuang',
-      'label': '杨庄'
-    }, {'value': 'yiheyuan', 'label': '颐和园'}, {'value': 'yuanmingyuan', 'label': '圆明园'}, {
-      'value': 'yuquanlu',
-      'label': '玉泉路'
-    }, {'value': 'zaojunmiao', 'label': '皂君庙'}, {'value': 'zhichunlu', 'label': '知春路'}, {
+      'label': 'YangZhuang'
+    }, {'value': 'yiheyuan', 'label': 'YiHeYuan'}, {
+      'value': 'yuanmingyuan',
+      'label': 'YuanMingYuan'
+    }, {'value': 'yuquanlu1', 'label': 'YuQuanLu'}, {
+      'value': 'zaojunmiao',
+      'label': 'ZaoJunMiao'
+    }, {'value': 'zhichunlu', 'label': 'ZhiChunLu'}, {
       'value': 'zhongguancun',
-      'label': '中关村'
-    }, {'value': 'zizhuqiao', 'label': '紫竹桥'}]
+      'label': 'ZhongGuanCun'
+    }, {'value': 'zizhuqiao', 'label': 'ZiZhuQiao'}]
   }, {
     'value': 'fengtai',
-    'label': '丰台',
-    'children': [{'value': 'beidadi', 'label': '北大地'}, {
+    'label': 'FengTai',
+    'children': [{'value': 'beidadi', 'label': 'BeiDaDi'}, {
       'value': 'beijingnanzhan',
-      'label': '北京南站'
-    }, {'value': 'caihuying', 'label': '菜户营'}, {'value': 'caoqiao', 'label': '草桥'}, {
+      'label': 'BeiJingNanZhan'
+    }, {'value': 'caihuying', 'label': 'CaiHuYing'}, {'value': 'caoqiao', 'label': 'CaoQiao'}, {
       'value': 'chengshousi',
-      'label': '成寿寺'
-    }, {'value': 'dahongmen', 'label': '大红门'}, {'value': 'fangshanqita', 'label': '房山其它'}, {
-      'value': 'fangzhuang',
-      'label': '方庄'
-    }, {'value': 'fengtaiqita', 'label': '丰台其它'}, {'value': 'guanganmen', 'label': '广安门'}, {
-      'value': 'heyi',
-      'label': '和义'
-    }, {'value': 'huaxiang', 'label': '花乡'}, {'value': 'jiaomen', 'label': '角门'}, {
-      'value': 'jiugong',
-      'label': '旧宫'
-    }, {'value': 'kandanqiao', 'label': '看丹桥'}, {'value': 'kejiyuanqu', 'label': '科技园区'}, {
+      'label': 'ChengShouSi'
+    }, {'value': 'dahongmen', 'label': 'DaHongMen'}, {
+      'value': 'fangshanqita',
+      'label': 'FangShanQiTa'
+    }, {'value': 'fangzhuang', 'label': 'FangZhuang'}, {
+      'value': 'fengtaiqita',
+      'label': 'FengTaiQiTa'
+    }, {'value': 'guanganmen', 'label': 'GuangAnMen'}, {'value': 'heyi', 'label': 'HeYi'}, {
+      'value': 'huaxiang',
+      'label': 'HuaXiang'
+    }, {'value': 'jiaomen', 'label': 'JiaoMen'}, {'value': 'jiugong', 'label': 'JiuGong'}, {
+      'value': 'kandanqiao',
+      'label': 'KanDanQiao'
+    }, {'value': 'kejiyuanqu', 'label': 'KeJiYuanQu'}, {
       'value': 'liujiayao',
-      'label': '刘家窑'
-    }, {'value': 'liuliqiao', 'label': '六里桥'}, {'value': 'lize', 'label': '丽泽'}, {
+      'label': 'LiuJiaYao'
+    }, {'value': 'liuliqiao', 'label': 'LiuLiQiao'}, {'value': 'lize', 'label': 'LiZe'}, {
       'value': 'lugouqiao',
-      'label': '卢沟桥'
-    }, {'value': 'majiabao', 'label': '马家堡'}, {'value': 'maliandao', 'label': '马连道'}, {
+      'label': 'LuGouQiao'
+    }, {'value': 'majiabao', 'label': 'MaJiaBao'}, {'value': 'maliandao', 'label': 'MaLianDao'}, {
       'value': 'muxiyuan',
-      'label': '木樨园'
-    }, {'value': 'puhuangyu', 'label': '蒲黄榆'}, {'value': 'qilizhuang', 'label': '七里庄'}, {
+      'label': 'MuXiYuan'
+    }, {'value': 'puhuangyu', 'label': 'PuHuangYu'}, {'value': 'qilizhuang', 'label': 'QiLiZhuang'}, {
       'value': 'qingta',
-      'label': '青塔'
-    }, {'value': 'shilihe', 'label': '十里河'}, {'value': 'songjiazhuang', 'label': '宋家庄'}, {
-      'value': 'taipingqiao',
-      'label': '太平桥'
-    }, {'value': 'taoranting', 'label': '陶然亭'}, {'value': 'wukesong', 'label': '五棵松'}, {
-      'value': 'wulidian',
-      'label': '五里店'
-    }, {'value': 'xihongmen', 'label': '西红门'}, {'value': 'xiluoyuan', 'label': '西罗园'}, {
-      'value': 'xingong',
-      'label': '新宫'
-    }, {'value': 'yangqiao', 'label': '洋桥'}, {'value': 'yongdingmen', 'label': '永定门'}, {
+      'label': 'QingTa'
+    }, {'value': 'shilihe', 'label': 'ShiLiHe'}, {
+      'value': 'songjiazhuang',
+      'label': 'SongJiaZhuang'
+    }, {'value': 'taipingqiao', 'label': 'TaiPingQiao'}, {
+      'value': 'taoranting',
+      'label': 'TaoRanTing'
+    }, {'value': 'wukesong', 'label': 'WuKeSong'}, {'value': 'wulidian', 'label': 'WuLiDian'}, {
+      'value': 'xihongmen',
+      'label': 'XiHongMen'
+    }, {'value': 'xiluoyuan', 'label': 'XiLuoYuan'}, {'value': 'xingong', 'label': 'XinGong'}, {
+      'value': 'yangqiao',
+      'label': 'YangQiao'
+    }, {'value': 'yongdingmen', 'label': 'YongDingMen'}, {
       'value': 'youanmenwai',
-      'label': '右安门外'
-    }, {'value': 'yuegezhuang', 'label': '岳各庄'}, {'value': 'yuquanying', 'label': '玉泉营'}, {
-      'value': 'zhaogongkou',
-      'label': '赵公口'
-    }]
+      'label': 'YouAnMenWai'
+    }, {'value': 'yuegezhuang', 'label': 'YueGeZhuang'}, {
+      'value': 'yuquanying',
+      'label': 'YuQuanYing'
+    }, {'value': 'zhaogongkou', 'label': 'ZhaoGongKou'}]
   }, {
     'value': 'shijingshan',
-    'label': '石景山',
-    'children': [{'value': 'bajiao', 'label': '八角'}, {'value': 'chengzi', 'label': '城子'}, {
+    'label': 'ShiJingShan',
+    'children': [{'value': 'bajiao', 'label': 'BaJiao'}, {'value': 'chengzi', 'label': 'ChengZi'}, {
       'value': 'gucheng',
-      'label': '古城'
-    }, {'value': 'laoshan', 'label': '老山'}, {'value': 'lugu', 'label': '鲁谷'}, {
+      'label': 'GuCheng'
+    }, {'value': 'laoshan', 'label': 'LaoShan'}, {'value': 'lugu', 'label': 'LuGu'}, {
       'value': 'mentougouqita',
-      'label': '门头沟其它'
-    }, {'value': 'pingguoyuan', 'label': '苹果园'}, {'value': 'qingta', 'label': '青塔'}, {
-      'value': 'shijingshanqita',
-      'label': '石景山其它'
-    }, {'value': 'yangzhuang', 'label': '杨庄'}, {'value': 'yuquanlu', 'label': '玉泉路'}]
+      'label': 'MenTouGouQiTa'
+    }, {'value': 'pingguoyuan', 'label': 'PingGuoYuan'}, {
+      'value': 'qingta',
+      'label': 'QingTa'
+    }, {'value': 'shijingshanqita', 'label': 'ShiJingShanQiTa'}, {
+      'value': 'yangzhuang',
+      'label': 'YangZhuang'
+    }, {'value': 'yuquanlu1', 'label': 'YuQuanLu'}]
   }, {
     'value': 'tongzhou',
-    'label': '通州',
-    'children': [{'value': 'beiguan', 'label': '北关'}, {
+    'label': 'TongZhou',
+    'children': [{'value': 'beiguan', 'label': 'BeiGuan'}, {
       'value': 'daxingxinjichangyangfangbieshuqu',
-      'label': '大兴新机场洋房别墅区'
-    }, {'value': 'guoyuan', 'label': '果园'}, {'value': 'jiukeshu', 'label': '九棵树(家乐福)'}, {
-      'value': 'linheli',
-      'label': '临河里'
-    }, {'value': 'liyuan', 'label': '梨园'}, {'value': 'luyuan', 'label': '潞苑'}, {
-      'value': 'majuqiao',
-      'label': '马驹桥'
-    }, {'value': 'qiaozhuang', 'label': '乔庄'}, {
-      'value': 'shoudoujichang',
-      'label': '首都机场'
-    }, {'value': 'tongzhoubeiyuan', 'label': '通州北苑'}, {'value': 'tongzhouqita', 'label': '通州其它'}, {
-      'value': 'wanda',
-      'label': '万达'
-    }, {'value': 'wuyihuayuan', 'label': '武夷花园'}, {'value': 'yizhuang', 'label': '亦庄'}, {
+      'label': 'DaXingXinJiChangYangFangBieShuQu'
+    }, {'value': 'guoyuan', 'label': 'GuoYuan'}, {
+      'value': 'jiukeshu1',
+      'label': 'JiuKeShu(JiaLeFu)'
+    }, {'value': 'linheli', 'label': 'LinHeLi'}, {'value': 'liyuan', 'label': 'LiYuan'}, {
+      'value': 'luyuan',
+      'label': 'LuYuan'
+    }, {'value': 'majuqiao', 'label': 'MaJuQiao'}, {
+      'value': 'qiaozhuang',
+      'label': 'QiaoZhuang'
+    }, {'value': 'shoudoujichang', 'label': 'ShouDuJiChang'}, {
+      'value': 'tongzhoubeiyuan',
+      'label': 'TongZhouBeiYuan'
+    }, {'value': 'tongzhouqita1', 'label': 'TongZhouQiTa'}, {
+      'value': 'wanda1',
+      'label': 'WanDa'
+    }, {'value': 'wuyihuayuan', 'label': 'WuYiHuaYuan'}, {'value': 'yizhuang', 'label': 'YiZhuang'}, {
       'value': 'yuqiao',
-      'label': '玉桥'
+      'label': 'YuQiao'
     }]
   }, {
     'value': 'changping',
-    'label': '昌平',
-    'children': [{'value': 'anningzhuang', 'label': '安宁庄'}, {
-      'value': 'aolinpikegongyuan',
-      'label': '奥林匹克公园'
-    }, {'value': 'baishanzhen', 'label': '百善镇'}, {'value': 'beiqijia', 'label': '北七家'}, {
-      'value': 'changpingqita',
-      'label': '昌平其它'
-    }, {'value': 'dongguan', 'label': '东关'}, {'value': 'guloudajie', 'label': '鼓楼大街'}, {
+    'label': 'ChangPing',
+    'children': [{'value': 'anningzhuang', 'label': 'AnNingZhuang'}, {
+      'value': 'aolinpikegongyuan1',
+      'label': 'AoLinPiKeGongYuan'
+    }, {'value': 'baishanzhen', 'label': 'BaiShanZhen'}, {
+      'value': 'beiqijia',
+      'label': 'BeiQiJia'
+    }, {'value': 'changpingqita', 'label': 'ChangPingQiTa'}, {
+      'value': 'dongguan',
+      'label': 'DongGuan'
+    }, {'value': 'guloudajie', 'label': 'GuLouDaJie'}, {
       'value': 'huilongguan',
-      'label': '回龙观'
-    }, {'value': 'huoying', 'label': '霍营'}, {'value': 'lishuiqiao', 'label': '立水桥'}, {
+      'label': 'HuiLongGuan'
+    }, {'value': 'huoying', 'label': 'HuoYing'}, {'value': 'lishuiqiao', 'label': 'LiShuiQiao'}, {
       'value': 'nankou',
-      'label': '南口'
-    }, {'value': 'nanshao', 'label': '南邵'}, {'value': 'shahe', 'label': '沙河'}, {
+      'label': 'NanKou'
+    }, {'value': 'nanshao', 'label': 'NanShao'}, {'value': 'shahe', 'label': 'ShaHe'}, {
       'value': 'tiantongyuan',
-      'label': '天通苑'
-    }, {'value': 'xiaotangshan', 'label': '小汤山'}, {'value': 'xiguanhuandao', 'label': '西关环岛'}, {
-      'value': 'xisanqi',
-      'label': '西三旗'
-    }]
+      'label': 'TianTongYuan'
+    }, {'value': 'xiaotangshan', 'label': 'XiaoTangShan'}, {
+      'value': 'xiguanhuandao',
+      'label': 'XiGuanHuanDao'
+    }, {'value': 'xisanqi', 'label': 'XiSanQi'}]
   }, {
     'value': 'daxing',
-    'label': '大兴',
-    'children': [{'value': 'daxingqita', 'label': '大兴其它'}, {
+    'label': 'DaXing',
+    'children': [{'value': 'daxingqita1', 'label': 'DaXingQiTa'}, {
       'value': 'daxingxinjichang',
-      'label': '大兴新机场'
-    }, {'value': 'daxingxinjichangyangfangbieshuqu', 'label': '大兴新机场洋房别墅区'}, {
-      'value': 'gaomidian',
-      'label': '高米店'
-    }, {'value': 'guanyinsi', 'label': '观音寺'}, {'value': 'heyi', 'label': '和义'}, {
-      'value': 'huangcunhuochezhan',
-      'label': '黄村火车站'
-    }, {'value': 'huangcunzhong', 'label': '黄村中'}, {'value': 'jiugong', 'label': '旧宫'}, {
+      'label': 'DaXingXinJiChang'
+    }, {
+      'value': 'daxingxinjichangyangfangbieshuqu',
+      'label': 'DaXingXinJiChangYangFangBieShuQu'
+    }, {'value': 'gaomidian', 'label': 'GaoMiDian'}, {'value': 'guanyinsi', 'label': 'GuanYinSi'}, {
+      'value': 'heyi',
+      'label': 'HeYi'
+    }, {'value': 'huangcunhuochezhan', 'label': 'HuangCunHuoCheZhan'}, {
+      'value': 'huangcunzhong',
+      'label': 'HuangCunZhong'
+    }, {'value': 'jiugong', 'label': 'JiuGong'}, {
       'value': 'kejiyuanqu',
-      'label': '科技园区'
-    }, {'value': 'nanzhongzhoujichangshangwuqu', 'label': '南中轴机场商务区'}, {
+      'label': 'KeJiYuanQu'
+    }, {'value': 'nanzhongzhoujichangshangwuqu', 'label': 'NanZhongZhouJiChangShangWuQu'}, {
       'value': 'tiangongyuan',
-      'label': '天宫院'
-    }, {'value': 'tiangongyuannan', 'label': '天宫院南'}, {'value': 'tongzhouqita', 'label': '通州其它'}, {
-      'value': 'xihongmen',
-      'label': '西红门'
-    }, {'value': 'yihezhuang', 'label': '义和庄'}, {'value': 'yinghai', 'label': '瀛海'}, {
+      'label': 'TianGongYuan'
+    }, {'value': 'tiangongyuannan', 'label': 'TianGongYuanNan'}, {
+      'value': 'tongzhouqita1',
+      'label': 'TongZhouQiTa'
+    }, {'value': 'xihongmen', 'label': 'XiHongMen'}, {
+      'value': 'yihezhuang',
+      'label': 'YiHeZhuang'
+    }, {'value': 'yinghai', 'label': 'YingHai'}, {
       'value': 'yizhuang',
-      'label': '亦庄'
-    }, {'value': 'yizhuangkaifaquqita', 'label': '亦庄开发区其它'}, {'value': 'zaoyuan', 'label': '枣园'}]
+      'label': 'YiZhuang'
+    }, {'value': 'yizhuangkaifaquqita', 'label': 'YiZhuangKaiFaQuQiTa'}, {'value': 'zaoyuan', 'label': 'ZaoYuan'}]
   }, {
     'value': 'yizhuangkaifaqu',
-    'label': '亦庄开发区',
-    'children': [{'value': 'daxingqita', 'label': '大兴其它'}, {
+    'label': 'YiZhuangKaiFaQu',
+    'children': [{'value': 'daxingqita1', 'label': 'DaXingQiTa'}, {
       'value': 'majuqiao',
-      'label': '马驹桥'
-    }, {'value': 'tongzhouqita', 'label': '通州其它'}, {
+      'label': 'MaJuQiao'
+    }, {'value': 'tongzhouqita1', 'label': 'TongZhouQiTa'}, {
       'value': 'yizhuang',
-      'label': '亦庄'
-    }, {'value': 'yizhuangkaifaquqita', 'label': '亦庄开发区其它'}]
+      'label': 'YiZhuang'
+    }, {'value': 'yizhuangkaifaquqita', 'label': 'YiZhuangKaiFaQuQiTa'}]
   }, {
     'value': 'shunyi',
-    'label': '顺义',
-    'children': [{'value': 'houshayu', 'label': '后沙峪'}, {'value': 'liqiao', 'label': '李桥'}, {
+    'label': 'ShunYi',
+    'children': [{'value': 'houshayu', 'label': 'HouShaYu'}, {'value': 'liqiao', 'label': 'LiQiao'}, {
       'value': 'mapo',
-      'label': '马坡'
-    }, {'value': 'shoudoujichang', 'label': '首都机场'}, {'value': 'shunyicheng', 'label': '顺义城'}, {
-      'value': 'shunyiqita',
-      'label': '顺义其它'
-    }, {'value': 'tianzhu', 'label': '天竺'}, {'value': 'zhongyangbieshuqu', 'label': '中央别墅区'}]
+      'label': 'MaPo'
+    }, {'value': 'shoudoujichang', 'label': 'ShouDuJiChang'}, {
+      'value': 'shunyicheng',
+      'label': 'ShunYiCheng'
+    }, {'value': 'shunyiqita', 'label': 'ShunYiQiTa'}, {
+      'value': 'tianzhu',
+      'label': 'TianZhu'
+    }, {'value': 'zhongyangbieshuqu', 'label': 'ZhongYangBieShuQu'}]
   }, {
     'value': 'fangshan',
-    'label': '房山',
-    'children': [{'value': 'changyang', 'label': '长阳'}, {'value': 'chengguan', 'label': '城关'}, {
-      'value': 'doudian',
-      'label': '窦店'
-    }, {'value': 'fangshanqita', 'label': '房山其它'}, {'value': 'hancunhe', 'label': '韩村河'}, {
-      'value': 'liangxiang',
-      'label': '良乡'
-    }, {'value': 'liulihe', 'label': '琉璃河'}, {'value': 'yancun', 'label': '阎村'}, {'value': 'yanshan', 'label': '燕山'}]
+    'label': 'FangShan',
+    'children': [{'value': 'changyang', 'label': 'ChangYang'}, {
+      'value': 'chengguan',
+      'label': 'ChengGuan'
+    }, {'value': 'doudian', 'label': 'DouDian'}, {
+      'value': 'fangshanqita',
+      'label': 'FangShanQiTa'
+    }, {'value': 'hancunhe', 'label': 'HanCunHe'}, {'value': 'liangxiang', 'label': 'LiangXiang'}, {
+      'value': 'liulihe',
+      'label': 'LiuLiHe'
+    }, {'value': 'yancun', 'label': 'YanCun'}, {'value': 'yanshan', 'label': 'YanShan'}]
   }, {
     'value': 'mentougou',
-    'label': '门头沟',
-    'children': [{'value': 'binhexiqu', 'label': '滨河西区'}, {'value': 'chengzi', 'label': '城子'}, {
-      'value': 'dayu',
-      'label': '大峪'
-    }, {'value': 'fengcun', 'label': '冯村'}, {'value': 'mentougouqita', 'label': '门头沟其它'}, {
-      'value': 'shijingshanqita',
-      'label': '石景山其它'
-    }, {'value': 'shimenying', 'label': '石门营'}]
-  }, {'value': 'pinggu', 'label': '平谷', 'children': [{'value': 'pingguqita', 'label': '平谷其它'}]}, {
+    'label': 'MenTouGou',
+    'children': [{'value': 'binhexiqu', 'label': 'BinHeXiQu'}, {
+      'value': 'chengzi',
+      'label': 'ChengZi'
+    }, {'value': 'dayu', 'label': 'DaYu'}, {'value': 'fengcun', 'label': 'FengCun'}, {
+      'value': 'mentougouqita',
+      'label': 'MenTouGouQiTa'
+    }, {'value': 'shijingshanqita', 'label': 'ShiJingShanQiTa'}, {'value': 'shimenying', 'label': 'ShiMenYing'}]
+  }, {
+    'value': 'pinggu',
+    'label': 'PingGu',
+    'children': [{'value': 'pingguqita', 'label': 'PingGuQiTa'}]
+  }, {
     'value': 'huairou',
-    'label': '怀柔',
-    'children': [{'value': 'huairouchengqu', 'label': '怀柔'}, {'value': 'huairouqita', 'label': '怀柔其它'}]
+    'label': 'HuaiRou',
+    'children': [{'value': 'huairouchengqu', 'label': 'HuaiRou'}, {'value': 'huairouqita', 'label': 'HuaiRouQiTa'}]
   }, {
     'value': 'miyun',
-    'label': '密云',
-    'children': [{'value': 'beizhuangzhen', 'label': '北庄镇'}, {
+    'label': 'MiYun',
+    'children': [{'value': 'beizhuangzhen', 'label': 'BeiZhuangZhen'}, {
       'value': 'bulaotunzhen',
-      'label': '不老屯镇'
-    }, {'value': 'daichengzizhen', 'label': '大城子镇'}, {
+      'label': 'BuLaoTunZhen'
+    }, {'value': 'daichengzizhen', 'label': 'DaChengZiZhen'}, {
       'value': 'dongshaoquzhen',
-      'label': '东邵渠镇'
-    }, {'value': 'fengjiayuzhen', 'label': '冯家峪镇'}, {'value': 'gaolingzhen', 'label': '高岭镇'}, {
-      'value': 'gubeikouzhen',
-      'label': '古北口镇'
-    }, {'value': 'guloujiedao', 'label': '鼓楼街道'}, {
-      'value': 'guoyuanjiedao',
-      'label': '果园街道'
-    }, {'value': 'henanzhaizhen', 'label': '河南寨镇'}, {
-      'value': 'huairouqita',
-      'label': '怀柔其它'
-    }, {'value': 'jugezhuangzhen', 'label': '巨各庄镇'}, {'value': 'miyunqita', 'label': '密云其它'}, {
+      'label': 'DongShaoQuZhen'
+    }, {'value': 'fengjiayuzhen', 'label': 'FengJiaYuZhen'}, {
+      'value': 'gaolingzhen',
+      'label': 'GaoLingZhen'
+    }, {'value': 'gubeikouzhen', 'label': 'GuBeiKouZhen'}, {
+      'value': 'guloujiedao',
+      'label': 'GuLouJieDao'
+    }, {'value': 'guoyuanjiedao', 'label': 'GuoYuanJieDao'}, {
+      'value': 'henanzhaizhen',
+      'label': 'HeNanZhaiZhen'
+    }, {'value': 'huairouqita', 'label': 'HuaiRouQiTa'}, {
+      'value': 'jugezhuangzhen',
+      'label': 'JuGeZhuangZhen'
+    }, {'value': 'miyunqita1', 'label': 'MiYunQiTa'}, {
       'value': 'miyunzhen',
-      'label': '密云镇'
-    }, {'value': 'mujiayuzhen', 'label': '穆家峪镇'}, {'value': 'shichengzhen', 'label': '石城镇'}, {
-      'value': 'shilipuzhen',
-      'label': '十里堡镇'
-    }, {'value': 'taishitunzhen', 'label': '太师屯镇'}, {'value': 'tanying', 'label': '檀营'}, {
+      'label': 'MiYunZhen'
+    }, {'value': 'mujiayuzhen', 'label': 'MuJiaYuZhen'}, {
+      'value': 'shichengzhen',
+      'label': 'ShiChengZhen'
+    }, {'value': 'shilipuzhen', 'label': 'ShiLiBaoZhen'}, {
+      'value': 'taishitunzhen',
+      'label': 'TaiShiTunZhen'
+    }, {'value': 'tanying', 'label': 'TanYing'}, {
       'value': 'xinchengzizhen',
-      'label': '新城子镇'
-    }, {'value': 'xitiangezhuangzhen', 'label': '西田各庄镇'}, {'value': 'xiwengzhuangzhen', 'label': '溪翁庄镇'}]
-  }, {'value': 'yanqing', 'label': '延庆', 'children': [{'value': 'yanqingqita', 'label': '延庆其它'}]}]
+      'label': 'XinChengZiZhen'
+    }, {'value': 'xitiangezhuangzhen', 'label': 'XiTianGeZhuangZhen'}, {
+      'value': 'xiwengzhuangzhen',
+      'label': 'XiWengZhuangZhen'
+    }]
+  }, {'value': 'yanqing', 'label': 'YanQing', 'children': [{'value': 'yanqingqita', 'label': 'YanQingQiTa'}]}]
 }

@@ -2,102 +2,109 @@
   <div class="about-area">
     <div class="left-block">
 <!--      <input id="communityInput" placeholder="小区名称/address" v-model="address"/>-->
-      <div style="margin: 0px 20px">
-        <el-form  ref="form" :model="form" label-width="80px">
+      <div style="margin: 10px 0px">
+        <el-form  ref="form" :model="form" label-width="100px">
           <el-row style="padding-right: 20px">
+<!--            <el-col :span="12">-->
+<!--              <el-form-item label="小区地址">-->
+<!--                <el-input id="communityInput" v-model="address" placeholder="小区名称/address" @change="getPosition"></el-input>-->
+<!--              </el-form-item>-->
+<!--            </el-col>-->
+
             <el-col :span="12">
-              <el-form-item label="小区地址">
-                <el-input id="communityInput" v-model="address" placeholder="小区名称/address"></el-input>
+              <el-form-item label="Address">
+                <el-autocomplete autocomplete="on" v-model="address" :fetch-suggestions="querySearchAsync" placeholder="Pleace Enter Community Address" :trigger-on-focus="false"
+                  @select="handleSelect" value-key="name" style="width: 80%"></el-autocomplete>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="面积">
-                <el-input v-model="form.size" maxlength="10"></el-input>
+              <el-form-item label="Area">
+                <el-input v-model="form.area" maxlength="10" style="width: 80%"></el-input>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="总楼层数">
-                <el-input v-model="form.totalFloor" placeholder="请输入内容"></el-input>
+              <el-form-item label="Total Floor">
+                <el-input v-model="form.totalFloor" placeholder="=" style="width: 80%"></el-input>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="梯户比例">
-                  <el-input v-model="form.elevatorRate" placeholder="请输入内容"></el-input>
+              <el-form-item label="Elevator Rate">
+                  <el-input v-model="form.elevatorRate" placeholder="" style="width: 80%"></el-input>
               </el-form-item>
             </el-col>
 
             <el-col :span="24">
-              <el-form-item label="朝向">
-                <el-checkbox-group v-model="form.direction">
-                  <el-checkbox label="南" name="direction"></el-checkbox>
-                  <el-checkbox label="北" name="direction"></el-checkbox>
-                  <el-checkbox label="西" name="direction"></el-checkbox>
-                  <el-checkbox label="东" name="direction"></el-checkbox>
-                  <el-checkbox label="西南" name="direction"></el-checkbox>
-                  <el-checkbox label="东南" name="direction"></el-checkbox>
-                  <el-checkbox label="西北" name="direction"></el-checkbox>
-                  <el-checkbox label="东北" name="direction"></el-checkbox>
+              <el-form-item label="Directions">
+                <el-checkbox-group v-model="form.directions">
+                  <el-checkbox label="S" name="direction"></el-checkbox>
+                  <el-checkbox label="N" name="direction"></el-checkbox>
+                  <el-checkbox label="W" name="direction"></el-checkbox>
+                  <el-checkbox label="E" name="direction"></el-checkbox>
+                  <el-checkbox label="SW" name="direction"></el-checkbox>
+                  <el-checkbox label="SE" name="direction"></el-checkbox>
+                  <el-checkbox label="NW" name="direction"></el-checkbox>
+                  <el-checkbox label="NE" name="direction"></el-checkbox>
                 </el-checkbox-group>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="供暖方式" >
+              <el-form-item label="Heating" >
                 <el-radio-group v-model="form.heating">
-                  <el-radio label="集中供暖"></el-radio>
-                  <el-radio label="自供暖"></el-radio>
+                  <el-radio label="0">self-heating</el-radio>
+                  <el-radio label="1">central-heating</el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="有无电梯">
-                <el-switch v-model="form.elevator"></el-switch>
+              <el-form-item label="Have elevator">
+                <el-switch v-model="form.elevator" :active-value="1" :inactive-value="1"></el-switch>
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
-              <el-form-item label="行政区">
-                <el-select v-model="form.district" placeholder="请选择活动区域">
-                  <el-option label="东城区" value="0"></el-option>
-                  <el-option label="西城区" value="1"></el-option>
-                  <el-option label="朝阳区" value="2"></el-option>
-                  <el-option label="丰台区" value="3"></el-option>
-                  <el-option label="海淀区" value="4"></el-option>
-                  <el-option label="石景山区" value="5"></el-option>
-                  <el-option label="大兴区" value="6"></el-option>
-                  <el-option label="房山区" value="7"></el-option>
-                  <el-option label="昌平区" value="8"></el-option>
-                  <el-option label="顺义区" value="9"></el-option>
-                  <el-option label="通州区" value="10"></el-option>
-                  <el-option label="门头沟区" value="11"></el-option>
-                  <el-option label="密云区" value="12"></el-option>
-                  <el-option label="怀柔区" value="13"></el-option>
-                  <el-option label="延庆区" value="14"></el-option>
-                  <el-option label="亦庄开发区" value="15"></el-option>
-                  <el-option label="平谷区" value="16"></el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
+<!--            <el-col :span="12">-->
+<!--              <el-form-item label="行政区">-->
+<!--                <el-select v-model="form.district" placeholder="请选择活动区域">-->
+<!--                  <el-option label="东城区" value="0"></el-option>-->
+<!--                  <el-option label="西城区" value="1"></el-option>-->
+<!--                  <el-option label="朝阳区" value="2"></el-option>-->
+<!--                  <el-option label="丰台区" value="3"></el-option>-->
+<!--                  <el-option label="海淀区" value="4"></el-option>-->
+<!--                  <el-option label="石景山区" value="5"></el-option>-->
+<!--                  <el-option label="大兴区" value="6"></el-option>-->
+<!--                  <el-option label="昌平区" value="7"></el-option>-->
+<!--                  <el-option label="顺义区" value="8"></el-option>-->
+<!--                  <el-option label="通州区" value="9"></el-option>-->
+<!--                  <el-option label="房山区" value="10"></el-option>-->
+<!--                  <el-option label="门头沟区" value="11"></el-option>-->
+<!--                  <el-option label="延庆区" value="12"></el-option>-->
+<!--                  <el-option label="怀柔区" value="13"></el-option>-->
+<!--                  <el-option label="密云区" value="14"></el-option>-->
+<!--                  <el-option label="亦庄开发区" value="15"></el-option>-->
+<!--                  <el-option label="平谷区" value="16"></el-option>-->
+<!--                </el-select>-->
+<!--              </el-form-item>-->
+<!--            </el-col>-->
 
             <el-col :span="12">
-              <el-form-item label="环数">
+              <el-form-item label="Ring">
                 <el-select v-model="form.ring" placeholder="请选择环数">
-                  <el-option label="二环内" value="0"></el-option>
-                  <el-option label="二环 - 三环" value="1"></el-option>
-                  <el-option label="三环 - 四环" value="2"></el-option>
-                  <el-option label="四环 - 五环" value="3"></el-option>
-                  <el-option label="五环 - 六环" value="4"></el-option>
-                  <el-option label="六环外" value="5"></el-option>
+                  <el-option label="二环内/Within 2nd Ring" value="0"></el-option>
+                  <el-option label="二环 - 三环/2nd - 3rd Ring" value="1"></el-option>
+                  <el-option label="三环 - 四环/3rd - 4th Ring" value="2"></el-option>
+                  <el-option label="四环 - 五环/4th - 5th Ring" value="3"></el-option>
+                  <el-option label="五环 - 六环/5th - 6th Ring" value="4"></el-option>
+                  <el-option label="六环外/Outside 6th Ring" value="5"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="装修情况">
+              <el-form-item label="Decoration">
                 <el-select v-model="form.decoration" placeholder="">
                   <el-option label="精装/Exquisite Decoration" value="0"></el-option>
                   <el-option label="简装/Simple Decoration" value="1"></el-option>
@@ -108,12 +115,12 @@
             </el-col>
 
             <el-col :span="12">
-              <el-form-item label="户型">
+              <el-form-item label="Structure">
                 <el-select v-model="form.structure" placeholder="">
                   <el-option label="平层/Flat" value="0"></el-option>
-                  <el-option label="复式/maisonette" value="1"></el-option>
-                  <el-option label="跃层" value="2"></el-option>
-                  <el-option label="错层" value="3"></el-option>
+                  <el-option label="复式/Maisonette" value="1"></el-option>
+                  <el-option label="跃层/Loft" value="2"></el-option>
+                  <el-option label="错层/Staggered floor" value="3"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -122,7 +129,7 @@
 
 
             <el-col :span="12">
-              <el-form-item label="楼层">
+              <el-form-item label="Floor">
                 <el-select v-model="form.floor" placeholder="">
                   <el-option label="地下室/Basement" value="0"></el-option>
                   <el-option label="底层/Ground Floor" value="1"></el-option>
@@ -136,28 +143,28 @@
 
             <el-col :span="24">
 
-              <el-form-item label="房间分配">
+              <el-form-item label="Allocation">
                 <el-col :span="5">
-                  <el-input v-model="form.room" placeholder="请输入内容">
-                    <template slot="append">室</template>
+                  <el-input v-model="form.room" placeholder="">
+                    <template slot="append">Room</template>
                   </el-input>
                 </el-col>
                 <el-col :span="1" style="color:white;">-</el-col>
                 <el-col :span="5">
-                  <el-input v-model="form.hall" placeholder="请输入内容">
-                    <template slot="append">厅</template>
+                  <el-input v-model="form.parlor" placeholder="">
+                    <template slot="append">Parlor</template>
                   </el-input>
                 </el-col>
                 <el-col :span="1" style="color:white;">-</el-col>
                 <el-col :span="5">
-                  <el-input v-model="form.toilet" placeholder="请输入内容">
-                    <template slot="append">卫</template>
+                  <el-input v-model="form.bathroom" placeholder="">
+                    <template slot="append">Toilet</template>
                   </el-input>
                 </el-col>
                 <el-col :span="1" style="color:white;">-</el-col>
                 <el-col :span="5">
-                  <el-input v-model="form.kitchen" placeholder="请输入内容">
-                    <template slot="append">厨</template>
+                  <el-input v-model="form.kitchen" placeholder="">
+                    <template slot="append">Kitchen</template>
                   </el-input>
                 </el-col>
                 <el-col :span="1" style="color:white;">-</el-col>
@@ -166,13 +173,15 @@
             </el-col>
 
 
-
+            <el-col :span="24" style="display: flow">
+              <label style="color: #606266; font-size: 14px; margin-left: 20px">Total House Price:</label>
+              <el-input v-model="prediction" maxlength="10" style="width: 30%; margin-left: 15px"></el-input>
+              <el-button type="primary" @click="predict" style="float: right; margin-right: 25px">Predict</el-button>
+            </el-col>
           </el-row>
 
 
-          <el-form-item>
-            <el-button type="primary" @click="predict">预测房价</el-button>
-          </el-form-item>
+
 
         </el-form>
 
@@ -184,7 +193,7 @@
 </template>
 
 <script>
-import {request} from "@/network/request";
+import {request, post} from "@/network/request";
 
 export default{
   name: 'Map',
@@ -203,22 +212,24 @@ export default{
         medicine: -1,
         school: -1,
         traffic: -1,
-        size: 0,
-        direction: [],
-        heating: 0,
+        area: 0,
+        directions: [],
+        heating: '0',
         district: 0,
         ring: 0,
         room: 0,
-        hall: 0,
-        toilet: 0,
+        parlor: 0,
+        bathroom: 0, // toilet
         kitchen: 0,
         elevator: true,
         elevatorRate: 0,
         decoration: 0,
         structure: 0,
         totalFloor: 0,
-        floor: 0
-      }
+        floor: 0,
+
+      },
+      prediction: undefined
     }
   },
   mounted() {
@@ -272,10 +283,10 @@ export default{
         map: this.map,
         icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
         position: this.position,
-        label: {
-          offset: new AMap.Pixel(10, -30),//修改label相对于maker的位置
-          content: "不知道在哪里"
-        }
+        // label: {
+        //   offset: new AMap.Pixel(10, -30),//修改label相对于maker的位置
+        //   content: "不知道在哪里"
+        // }
         // offset: [2,2]
       });
 
@@ -300,10 +311,11 @@ export default{
         //构造地点查询类
         this.poiSearch = new AMap.PlaceSearch({
           type: '', // 兴趣点类别
-          pageSize: 5, // 单页显示结果条数
+          pageSize: 10, // 单页显示结果条数
           pageIndex: 1, // 页码
           city: "010", // 兴趣点城市
           citylimit: true,        //是否强制限制在设置的城市内搜索
+          lang: 'en'
           // map: map, // 展现结果的地图实例
           // autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
@@ -345,34 +357,58 @@ export default{
 
     },
     getPosition(){
-      console.log("this " + this);
+      console.log("在查了 "+ this.address);
+
       this.geocoder.getLocation(this.address, (status, result) => {
 
         if (status === 'complete' && result.geocodes.length) {
-          this.position = result.geocodes[0].location
+          this.position = result.geocodes[0].location;
           this.marker.setPosition(this.position);
           this.map.add(this.marker);
           // map.setFitView(marker);
           this.map.setCenter(this.position);
           this.circle.setCenter(this.position);
         } else {
+          console.log("查不到");
           log.error('根据地址查询位置失败');
         }
       });
     },
     predict() {
-      request({
+      console.log(this.form);
+      post({
         url: '/predict',
         data: this.form,
-        method: "POST"
       }).then(res => {
         console.log(res);
+        this.prediction = res;
       }).catch(err => {
         console.log(err);
       })
-      // axios.post('http://127.0.0.1:5000/predict', this.form).then(res => {
-      //   console.log(res);
-      // })
+    },
+    handleSelect(item) {
+      console.log(item);
+      // this.getPosition();
+      this.position = [item.location.lng, item.location.lat];
+      this.marker.setPosition(this.position);
+      this.map.add(this.marker);
+      // map.setFitView(marker);
+      this.map.setCenter(this.position);
+      this.circle.setCenter(this.position);
+      this.searchPOI();
+    },
+    querySearchAsync(queryString, callback) {
+      // callback([{'value':'a','address':'1'},{'value':'b','address':'2'}]);
+
+      this.poiSearch.search(queryString, (status, result) => {
+        console.log(result);
+        try{
+          callback(result.poiList.pois);
+        }catch {
+          callback([]);
+        }
+
+      });
     }
 
   },
@@ -386,7 +422,7 @@ export default{
     right: 0px;
     bottom: 0px;
     width: 40%;
-    top: 70px;
+    top: 50px;
   }
 
   .left-block{

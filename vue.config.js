@@ -15,7 +15,6 @@ module.exports = {
         }
     },
     devServer: {
-        port: '5000',
         open: true,
         proxy: {//解决跨域问题
             '/api': {
