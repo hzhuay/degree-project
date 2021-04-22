@@ -8,7 +8,7 @@
 
         <el-button @click="locationDialogVisible = true" size="mini" :type="location[0] == null ? '' : 'primary'" class="select-button">{{ location[0] == null ? "Location" : location[1] }}</el-button>
         <el-dialog title="Select district and block" :visible.sync="locationDialogVisible" class="select-dialog" :before-close="locationChange">
-          <div class="block" style="text-align: center">
+          <div class="block" style="text-align: center;">
             <el-cascader v-model="location" :options="options" placeholder="">
               <template slot-scope="{ node, data }">
                 <span>{{ data.label }}</span>
@@ -98,18 +98,20 @@
 
 
       </div>
-      <div v-for="(item, index) in list" :key="index" @mouseenter="showMarker(index)" @mouseleave="hideMarker(index)">
-        <el-card shadow="hover" style="margin: 10px">
-          <el-container style="height: 200px">
+      <div v-for="(item, index) in list" :key="index" @mouseenter="showMarker(index)" @mouseleave="hideMarker(index)" style="cursor: pointer" @click="aaa(index)">
+        <el-card shadow="hover" style="margin: 10px" >
+          <el-container style="height: 200px;" >
             <el-aside style="background-color: black; overflow: hidden">
-              <el-image style="height: 200px; width: 300px" :fit="fit" :src="require('@/assets/img/house'+ index +'.jpg')" alt=""></el-image>
+              <el-image style="height: 200px; width: 300px" fit="fit" :src="require('@/assets/img/house'+ index +'.jpg')" alt=""></el-image>
             </el-aside>
             <el-main class="main-text">
               <el-row :gutter="20" style="height: 100%">
                 <el-col :span="16" style="height: 100%">
                   <div>
-                    <div class="house-info house-title" style="">{{item.title}}</div>
-                    <div class="house-info" style="">
+                    <div class="house-info house-title two-line" style=" cursor:pointer">
+                      {{item.title}}
+                    </div>
+                    <div class="house-info one-line" style="">
                       <i class="el-icon-map-location"></i>
                       {{item.name}}
                     </div>
@@ -117,9 +119,7 @@
                       <i class="el-icon-house" style="font-size: medium"></i>
                       {{item.des}}
                     </div>
-                    <div class="house-info">
-                    </div>
-                    <div class="house-info">
+                    <div class="house-info two-line">
                       <i class="el-icon-collection-tag"></i>
                       <el-tag size="small" class="house-tag">Good</el-tag>
                       <el-tag size="small" type="success" class="house-tag">Nice</el-tag>
@@ -173,6 +173,7 @@
 .main-text{
   text-align: left;
   display: inline-block;
+  overflow: hidden;
 }
 .priceInfo{
   text-align: right;
@@ -190,21 +191,8 @@
 }
 .house-title{
   font-size: larger;
-  overflow: hidden;
-  /*white-space: nowrap;*/
-  text-overflow: ellipsis;
   max-width: 100%;
   font-weight: bold;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  display: -moz-box;
-  -moz-line-clamp: 2;
-  -moz-box-orient: vertical;
-  word-wrap: break-word;
-  word-break: normal;
-  white-space: normal;
 }
 .el-divider--vertical{
   height: auto;
@@ -249,6 +237,42 @@
 .el-card__body{
   padding: 0px;
 }
+.info-title{
+  margin: 10px 10px 0px 10px;
+  color: #484848;
+  font-size: 12px;
+}
+.info-name{
+  margin: 10px 10px 0px 10px;
+  color: #767676;
+  font-size: 10px;
+  line-height: 1.33333em;
+  font-weight: 800;
+}
+.two-line{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  /*-moz-line-clamp: 2;*/
+  /*-moz-box-orient: vertical;*/
+  word-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}
+.one-line{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  /*-moz-line-clamp: 2;*/
+  /*-moz-box-orient: vertical;*/
+  word-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}
 </style>
 
 <script>
@@ -282,7 +306,7 @@ export default {
       selected: -1,
       location: [null, null],
       sortBy: 2, // 第一个数字表示正在根据哪个属性排序，第二个表示升序还是降序
-      sortRule: 1
+      sortRule: 0
 
     }
   },
@@ -402,8 +426,8 @@ export default {
         // }
         this.list = res['data'];
         // console.log(res)
-        // console.log(this.list);
-        // console.log(res['cnt'])9;
+        console.log(this.list);
+        // console.log(res['cnt']);
         //标记点
         for (let i=0; i<res['cnt']; i++) {
 
@@ -417,7 +441,10 @@ export default {
             label: {},
             clickable: true
           });
-          this.marks[i].price = String(this.list[i].totalPrice);
+          // this.marks[i].price = String(this.list[i].totalPrice);
+
+          this.marks[i].item = this.list[i];
+          this.marks[i].index = i;
           this.marks[i].on('click', this.showInfo);
         }
         // console.log(this.marks);
@@ -427,15 +454,38 @@ export default {
       });
     },
     showInfo(e) {
-      let marker = e.target;
+      let item = e.target.item;
+      console.log(e.target);
+      this.showMarker(e.target.index);
+
+      let con = format(`
+            <div style="height: 300px; width: 280px; background-color: white; border-radius: 5px">
+              <div><img id="house-photo" src="http://tpc.googlesyndication.com/simgad/5843493769827749134" style="height: 180px; width: 280px; border-radius: 5px;" /></div>
+              <div style="height: 120px">
+                <div class="info-name two-line">{0}</div>
+                <div class="info-title two-line">{1}</div>
+                <div style="display: flow; margin: 10px 10px 0px 10px;">
+                  <span style=" color: red; font-weight: bold">{2} million</span>
+                  <a style="font-size: small; float: right" href="/detail?name={3}">more</a>
+                </div>
+
+
+              </div>
+            </div>
+        `, item.name, item.title, item.total_price.toFixed(2),item.name)
+
 
       this.infoWin = new AMap.InfoWindow({
-        content: marker.price,  //使用默认信息窗体框样式，显示信息内容
-        anchor: "top",
+        isCustom: true,
+        content: con,  //使用默认信息窗体框样式，显示信息内容
+        anchor: "buttom",
         closeWhenClickMap: true
       });
-      this.infoWin.open(this.map, marker.getPosition());
+      this.infoWin.open(this.map, e.target.getPosition());
+      this.map.setFitView();
 
+      let photo = document.getElementById("house-photo");
+      console.log(photo);
     },
     showMarker(index) {
       // console.log(index);
@@ -490,6 +540,15 @@ export default {
         this.sortRule = 0;
       }
       this.getData(this.params);
+    },
+    aaa(id) {
+      console.log('跳转');
+      this.$router.push({
+        path: '/detail',
+        query: {
+          name: id
+        }
+      })
     }
   }
 }

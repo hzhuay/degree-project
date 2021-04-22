@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Learn from '@/views/Learn.vue'
 import List from "@/views/List";
+import Detail from "@/views/Detail";
 
 Vue.use(VueRouter)
 
@@ -29,7 +30,13 @@ const routes = [
     path: '/list',
     name: 'List',
     component: List
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail
   }
+
 ]
 
 const router = new VueRouter({

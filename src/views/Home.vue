@@ -2,8 +2,10 @@
   <div class="home">
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <button @click="search(0)">start</button>
-    <button @click="write">write</button>
+<!--    <button @click="search(0)">start</button>-->
+<!--    <button @click="write">write</button>-->
+    <button @click="test">test</button>
+    <div>{{comms}}</div>
 <!--    {{comms}}-->
   </div>
 </template>
@@ -90,7 +92,19 @@ export default {
         url: '/write_dict',
         method: "GET"
       })
+    },
+    test() {
+      request({
+        url: '/test',
+        method: "GET"
+      }).then(res => {
+        this.comms = res;
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      });
     }
+
   }
 }
 </script>

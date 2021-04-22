@@ -45,10 +45,6 @@
       }
     },
     methods: {
-      jump() {
-        this.$router.push('/user/' + this.userId);
-        this.$router.replace()
-      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       }
