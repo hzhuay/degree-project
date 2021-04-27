@@ -8,6 +8,21 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 import 'normalize.css'
 import VCalendar from 'v-calendar';
+import $ from 'jquery';
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import './assets/css/vendor.css'
+import './assets/css/style.css'
+import './assets/css/responsive.css'
+
+// import './assets/js/main'
+// import './assets/js/vendor'
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 
 Vue.use(ElementUI);
 // Use v-calendar & v-date-picker components
@@ -16,6 +31,8 @@ Vue.use(VCalendar, {
 });
 
 Vue.config.productionTip = false
+// 全局注册 $
+Vue.prototype.$ = $
 
 new Vue({
   router,

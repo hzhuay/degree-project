@@ -1,161 +1,165 @@
 <template>
-  <div class="main-area">
-    <div class="left-block">
-<!--      <div>{{this.list}}</div>-->
-<!--      筛选区-->
-      <div style="border-bottom: #f6f6f6 1px solid; padding: 5px 0px; display: flow">
+  <div>
+    <my-header></my-header>
+    <div class="main-area">
+      <div class="left-block">
+        <!--      <div>{{this.list}}</div>-->
+        <!--      筛选区-->
+        <div style="border-bottom: #f6f6f6 1px solid; padding: 5px 0px; display: flow">
 
 
-        <el-button @click="locationDialogVisible = true" size="mini" :type="location[0] == null ? '' : 'primary'" class="select-button">{{ location[0] == null ? "Location" : location[1] }}</el-button>
-        <el-dialog title="Select district and block" :visible.sync="locationDialogVisible" class="select-dialog" :before-close="locationChange">
-          <div class="block" style="text-align: center;">
-            <el-cascader v-model="location" :options="options" placeholder="">
-              <template slot-scope="{ node, data }">
-                <span>{{ data.label }}</span>
-                <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
-              </template>
-            </el-cascader>
-          </div>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="location=''">Reset</el-button>
-            <el-button type="primary" @click="locationChange" >Confirm</el-button>
-          </div>
-        </el-dialog>
-
-        <el-button @click="priceDialogVisible=true" :type="priceRange[0]==0&&priceRange[1]==maxPriceRange ? '' : 'primary'"
-                   class="select-button" size="mini">{{ priceRangeBtn }}</el-button>
-        <el-dialog title="Price Range" :visible.sync="priceDialogVisible" class="select-dialog" :before-close="priceRangeChange">
-          <div class="block">
-            <div>
-              <el-row :gutter="20">
-                <el-col :span="11">
-                  <el-input v-model="minPrice">
-                    <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
-                  </el-input>
-                </el-col>
-                <el-col :span="2" >
-                  <span style="text-align: center; height: 40px; line-height: 40px; font-size: 26px;">-</span>
-                </el-col>
-                <el-col :span="11">
-                  <el-input v-model="maxPrice">
-                    <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
-                  </el-input>
-                </el-col>
-              </el-row>
-
+          <el-button @click="locationDialogVisible = true" size="mini" :type="location[0] == null ? '' : 'primary'" class="select-button">{{ location[0] == null ? "Location" : location[1] }}</el-button>
+          <el-dialog title="Select district and block" :visible.sync="locationDialogVisible" class="select-dialog" :before-close="locationChange">
+            <div class="block" style="text-align: center;">
+              <el-cascader v-model="location" :options="options" placeholder="">
+                <template slot-scope="{ node, data }">
+                  <span>{{ data.label }}</span>
+                  <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+                </template>
+              </el-cascader>
             </div>
-            <!--            价格区间-->
-            <el-slider v-model="priceRange" range :show-tooltip="false" :min="0" :max="maxPriceRange" :step="1"></el-slider>
-          </div>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="priceRange=[0,maxPriceRange]">Reset</el-button>
-            <el-button type="primary" @click="priceRangeChange">Confirm</el-button>
-          </div>
-        </el-dialog>
-
-        <el-button @click="areaDialogVisible = true" :type="areaRange[0]==0&&areaRange[1]==200 ? '' : 'primary'"
-                   class="select-button" size="mini">{{ areaRangeBtn }}</el-button>
-        <el-dialog title="Price Range" :visible.sync="areaDialogVisible" class="select-dialog" :before-close="areaRangeChange">
-          <div class="block">
-            <div>
-              <el-row :gutter="20">
-                <el-col :span="11">
-                  <el-input v-model="areaRange[0]" readonly>
-                    <img slot="suffix" src="../assets/img/m2.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px; right: 0px">
-                  </el-input>
-                </el-col>
-                <el-col :span="2" >
-                  <span style="text-align: center; height: 40px; line-height: 40px; font-size: 26px;">-</span>
-                </el-col>
-                <el-col :span="11">
-                  <el-input v-model="areaRange[1] == 200 ? areaRange[1]+'+' : areaRange[1]" readonly>
-                    <img slot="suffix" src="../assets/img/m2.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px; right:0px">
-                  </el-input>
-                </el-col>
-              </el-row>
-
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="location=''">Reset</el-button>
+              <el-button type="primary" @click="locationChange" >Confirm</el-button>
             </div>
-            <!--            面积区间-->
-            <el-slider v-model="areaRange" range :show-tooltip="false" :min="0" :max="200" :step="1"></el-slider>
-          </div>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="areaRange=[0,200]">Reset</el-button>
-            <el-button type="primary" @click="areaRangeChange">Confirm</el-button>
-          </div>
-        </el-dialog>
-        <el-button-group style="flow: right">
-          <i icon="el-icon-sort"></i>
-          <el-button @click="sortByPrice" :type="sortBy==1 ? 'primary' : ''" class="select-button" size="mini">
-            Price
-            <i :class="priceClass" class="el-icon--right"></i>
-          </el-button>
-          <el-button @click="sortByIndex" :type="sortBy==2 ? 'primary' : ''" class="select-button" size="mini">
-            recommendation
-            <i :class="indexClass" class="el-icon--right"></i>
-          </el-button>
-        </el-button-group>
+          </el-dialog>
+
+          <el-button @click="priceDialogVisible=true" :type="priceRange[0]==0&&priceRange[1]==maxPriceRange ? '' : 'primary'"
+                     class="select-button" size="mini">{{ priceRangeBtn }}</el-button>
+          <el-dialog title="Price Range" :visible.sync="priceDialogVisible" class="select-dialog" :before-close="priceRangeChange">
+            <div class="block">
+              <div>
+                <el-row :gutter="20">
+                  <el-col :span="11">
+                    <el-input v-model="minPrice">
+                      <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
+                    </el-input>
+                  </el-col>
+                  <el-col :span="2" >
+                    <span style="text-align: center; height: 40px; line-height: 40px; font-size: 26px;">-</span>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-input v-model="maxPrice">
+                      <img slot="prefix" src="../assets/img/rmb.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px">
+                    </el-input>
+                  </el-col>
+                </el-row>
+
+              </div>
+              <!--            价格区间-->
+              <el-slider v-model="priceRange" range :show-tooltip="false" :min="0" :max="maxPriceRange" :step="1"></el-slider>
+            </div>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="priceRange=[0,maxPriceRange]">Reset</el-button>
+              <el-button type="primary" @click="priceRangeChange">Confirm</el-button>
+            </div>
+          </el-dialog>
+
+          <el-button @click="areaDialogVisible = true" :type="areaRange[0]==0&&areaRange[1]==200 ? '' : 'primary'"
+                     class="select-button" size="mini">{{ areaRangeBtn }}</el-button>
+          <el-dialog title="Price Range" :visible.sync="areaDialogVisible" class="select-dialog" :before-close="areaRangeChange">
+            <div class="block">
+              <div>
+                <el-row :gutter="20">
+                  <el-col :span="11">
+                    <el-input v-model="areaRange[0]" readonly>
+                      <img slot="suffix" src="../assets/img/m2.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px; right: 0px">
+                    </el-input>
+                  </el-col>
+                  <el-col :span="2" >
+                    <span style="text-align: center; height: 40px; line-height: 40px; font-size: 26px;">-</span>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-input v-model="areaRange[1] == 200 ? areaRange[1]+'+' : areaRange[1]" readonly>
+                      <img slot="suffix" src="../assets/img/m2.png" style="height: 20px; position: absolute; margin: auto; top: 0px; bottom: 0px; right:0px">
+                    </el-input>
+                  </el-col>
+                </el-row>
+
+              </div>
+              <!--            面积区间-->
+              <el-slider v-model="areaRange" range :show-tooltip="false" :min="0" :max="200" :step="1"></el-slider>
+            </div>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="areaRange=[0,200]">Reset</el-button>
+              <el-button type="primary" @click="areaRangeChange">Confirm</el-button>
+            </div>
+          </el-dialog>
+          <el-button-group style="flow: right">
+            <i icon="el-icon-sort"></i>
+            <el-button @click="sortByPrice" :type="sortBy==1 ? 'primary' : ''" class="select-button" size="mini">
+              Price
+              <i :class="priceClass" class="el-icon--right"></i>
+            </el-button>
+            <el-button @click="sortByIndex" :type="sortBy==2 ? 'primary' : ''" class="select-button" size="mini">
+              recommendation
+              <i :class="indexClass" class="el-icon--right"></i>
+            </el-button>
+          </el-button-group>
 
 
+
+        </div>
+        <div v-for="(item, index) in list" :key="index" @mouseenter="showMarker(index)" @mouseleave="hideMarker(index)" style="cursor: pointer" @click="aaa(index)">
+          <el-card shadow="hover" style="margin: 10px" >
+            <el-container style="height: 200px;" >
+              <el-aside style="background-color: black; overflow: hidden">
+                <el-image style="height: 200px; width: 300px" fit="fit" :src="require('@/assets/img/house'+ index +'.jpg')" alt=""></el-image>
+              </el-aside>
+              <el-main class="main-text">
+                <el-row :gutter="20" style="height: 100%">
+                  <el-col :span="16" style="height: 100%">
+                    <div>
+                      <div class="house-info house-title two-line" style=" cursor:pointer">
+                        {{item.title}}
+                      </div>
+                      <div class="house-info one-line" style="">
+                        <i class="el-icon-map-location"></i>
+                        {{item.name}}
+                      </div>
+                      <div class="house-info" style="font-size: x-small">
+                        <i class="el-icon-house" style="font-size: medium"></i>
+                        {{item.des}}
+                      </div>
+                      <div class="house-info two-line">
+                        <i class="el-icon-collection-tag"></i>
+                        <el-tag size="small" class="house-tag">Good</el-tag>
+                        <el-tag size="small" type="success" class="house-tag">Nice</el-tag>
+                        <el-tag size="small" type="warning" class="house-tag">Perfect</el-tag>
+                        <el-tag size="small" type="danger" class="house-tag">Wonderful</el-tag>
+                      </div>
+                    </div>
+                  </el-col>
+
+                  <el-col :span="8" style="; border-left: rgba(0,0,0,0.1) solid 1px; height: 100%">
+                    <div class="priceInfo">
+                      <span class="totalPrice">{{item.total_price.toFixed(2)}}</span>
+                      million
+                    </div>
+                    <div style="text-align: right; font-size: small">
+                      {{ '¥ ' + item.avg_price + '/㎡'}}
+                    </div>
+                  </el-col>
+                </el-row>
+              </el-main>
+            </el-container>
+          </el-card>
+        </div>
+
+        <div style="text-align: center">
+          <el-pagination background layout="prev, pager, next" :total="total" :page-size="pageSize" :current-page.sync="page" @prev-click="prevPage" @next-click="nextPage" @current-change="currentChange">
+          </el-pagination>
+        </div>
+
+        <!--      <el-backtop target=".left-block"></el-backtop>-->
 
       </div>
-      <div v-for="(item, index) in list" :key="index" @mouseenter="showMarker(index)" @mouseleave="hideMarker(index)" style="cursor: pointer" @click="aaa(index)">
-        <el-card shadow="hover" style="margin: 10px" >
-          <el-container style="height: 200px;" >
-            <el-aside style="background-color: black; overflow: hidden">
-              <el-image style="height: 200px; width: 300px" fit="fit" :src="require('@/assets/img/house'+ index +'.jpg')" alt=""></el-image>
-            </el-aside>
-            <el-main class="main-text">
-              <el-row :gutter="20" style="height: 100%">
-                <el-col :span="16" style="height: 100%">
-                  <div>
-                    <div class="house-info house-title two-line" style=" cursor:pointer">
-                      {{item.title}}
-                    </div>
-                    <div class="house-info one-line" style="">
-                      <i class="el-icon-map-location"></i>
-                      {{item.name}}
-                    </div>
-                    <div class="house-info" style="font-size: x-small">
-                      <i class="el-icon-house" style="font-size: medium"></i>
-                      {{item.des}}
-                    </div>
-                    <div class="house-info two-line">
-                      <i class="el-icon-collection-tag"></i>
-                      <el-tag size="small" class="house-tag">Good</el-tag>
-                      <el-tag size="small" type="success" class="house-tag">Nice</el-tag>
-                      <el-tag size="small" type="warning" class="house-tag">Perfect</el-tag>
-                      <el-tag size="small" type="danger" class="house-tag">Wonderful</el-tag>
-                    </div>
-                  </div>
-                </el-col>
-
-                <el-col :span="8" style="; border-left: rgba(0,0,0,0.1) solid 1px; height: 100%">
-                  <div class="priceInfo">
-                    <span class="totalPrice">{{item.total_price.toFixed(2)}}</span>
-                    million
-                  </div>
-                  <div style="text-align: right; font-size: small">
-                    {{ '¥ ' + item.avg_price + '/㎡'}}
-                  </div>
-                </el-col>
-              </el-row>
-            </el-main>
-          </el-container>
-        </el-card>
-      </div>
-
-      <div style="text-align: center">
-        <el-pagination background layout="prev, pager, next" :total="total" :page-size="pageSize" :current-page.sync="page" @prev-click="prevPage" @next-click="nextPage" @current-change="currentChange">
-        </el-pagination>
-      </div>
-
-<!--      <el-backtop target=".left-block"></el-backtop>-->
+      <!--    高德地图-->
+      <div id="container" tabindex="0"></div>
 
     </div>
-<!--    高德地图-->
-    <div id="container" tabindex="0"></div>
-
   </div>
+
 </template>
 <style scoped>
 #container{
@@ -279,11 +283,13 @@
 import {request} from "@/network/request";
 import district_data from "@/utils/district_data";
 import {format} from "@/utils/funs";
-
+import MyHeader from "@/components/myHeader";
 
 export default {
   name: "List",
-  components: {},
+  components: {
+    MyHeader,
+  },
   data() {
     return {
       list: [],
@@ -382,8 +388,8 @@ export default {
       lang: 'zh_en',
       resizeEnable: true,
       zoom: 14,
+      mapStyle: 'amap://styles/graffiti', //设置地图的显示样式
     });
-
     this.getData(this.params);
 
     console.log(this.location);

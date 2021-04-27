@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Learn from '@/views/Learn.vue'
 import List from "@/views/List";
 import Detail from "@/views/Detail";
+import Test from "@/views/Test";
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/detail',
     name: 'Detail',
     component: Detail
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   }
 
 ]

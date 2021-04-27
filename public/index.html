@@ -7,15 +7,41 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
 <!--    <script src="https://webapi.amap.com/maps?v=1.4.15&key=189802b64c5f7b538287281c7d628d48"></script>-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!--    <link rel="stylesheet" href="assets/css/vendor.css">-->
+<!--    <link rel="stylesheet" href="assets/css/style.css">-->
+<!--    <link rel="stylesheet" href="assets/css/responsive.css">-->
+    <!-- JS-->
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=189802b64c5f7b538287281c7d628d48&plugin=AMap.AutoComplete,AMap.Geocoder"></script>
+
+
   </head>
 
-  <body>
+  <body class="body-bg">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+
     <!-- built files will be auto injected -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="app"></div>
+
+
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
   </body>

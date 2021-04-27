@@ -1,8 +1,9 @@
 <template>
   <div class="about-area">
+    <my-header></my-header>
     <div class="left-block">
 <!--      <input id="communityInput" placeholder="小区名称/address" v-model="address"/>-->
-      <div style="margin: 10px 0px">
+      <div>
         <el-form  ref="form" :model="form" label-width="100px">
           <el-row style="padding-right: 20px">
 <!--            <el-col :span="12">-->
@@ -194,9 +195,13 @@
 
 <script>
 import {request, post} from "@/network/request";
+import myHeader from "@/components/myHeader";
 
 export default{
   name: 'Map',
+  components:{
+    myHeader
+  },
   data() {
     return {
       position: [],
@@ -328,6 +333,8 @@ export default{
           position: this.marker.getPosition()
         })
       })
+
+
     },
     searchPOI(){
 
